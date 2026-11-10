@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="Space Dodger">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#05061a"/>
+      <stop offset="1" stop-color="#17133a"/>
+    </linearGradient>
+    <radialGradient id="neb1" cx="0.2" cy="0.3" r="0.5">
+      <stop offset="0" stop-color="#3f6bff" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#3f6bff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="neb2" cx="0.85" cy="0.7" r="0.45">
+      <stop offset="0" stop-color="#ff2d55" stop-opacity=".30"/>
+      <stop offset="1" stop-color="#ff2d55" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9fd0ff"/>
+      <stop offset="1" stop-color="#4d8dff"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowR" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="320" fill="url(#bg)"/>
+  <rect width="1200" height="320" fill="url(#neb1)"/>
+  <rect width="1200" height="320" fill="url(#neb2)"/>
+
+  <g fill="#dfe6ff">
+    <circle cx="80" cy="40" r="1.4"/><circle cx="210" cy="280" r="1.1"/><circle cx="330" cy="60" r="1.6" opacity=".7"/>
+    <circle cx="420" cy="250" r="1"/><circle cx="520" cy="30" r="1.2"/><circle cx="640" cy="290" r="1.5" opacity=".7"/>
+    <circle cx="760" cy="45" r="1"/><circle cx="880" cy="270" r="1.3"/><circle cx="960" cy="35" r="1.6" opacity=".7"/>
+    <circle cx="1100" cy="300" r="1.1"/><circle cx="1150" cy="70" r="1.4"/><circle cx="40" cy="190" r="1.2"/>
+    <circle cx="280" cy="170" r="1"/><circle cx="570" cy="150" r="0.9"/><circle cx="1010" cy="160" r="1"/>
+    <circle cx="150" cy="95" r="0.9"/><circle cx="700" cy="110" r="1"/><circle cx="460" cy="300" r="1"/>
+  </g>
+
+  <!-- tiros do jogador -->
+  <g stroke="#6fb4ff" stroke-width="3.5" stroke-linecap="round" filter="url(#glow)">
+    <line x1="215" y1="118" x2="262" y2="118"/>
+    <line x1="215" y1="202" x2="262" y2="202"/>
+  </g>
+
+  <!-- nave do jogador (azul) -->
+  <g transform="translate(130 160) scale(3.4)" filter="url(#glow)" stroke-linejoin="round" stroke-linecap="round">
+    <polygon points="4,4 -3,20 -14,20 -12,4" fill="#1a4fc4" stroke="#a9d0ff" stroke-width=".6"/>
+    <polygon points="4,-4 -3,-20 -14,-20 -12,-4" fill="#1a4fc4" stroke="#a9d0ff" stroke-width=".6"/>
+    <line x1="-8" y1="19" x2="14" y2="19" stroke="#d6e8ff" stroke-width=".8"/>
+    <line x1="-8" y1="-19" x2="14" y2="-19" stroke="#d6e8ff" stroke-width=".8"/>
+    <rect x="-18" y="7" width="17" height="5" fill="#0f3a96" stroke="#a9d0ff" stroke-width=".5"/>
+    <rect x="-18" y="-12" width="17" height="5" fill="#0f3a96" stroke="#a9d0ff" stroke-width=".5"/>
+    <polygon points="28,0 18,-2.4 2,-4.5 -14,-4 -17,-2 -17,2 -14,4 2,4.5 18,2.4" fill="#3b82ff" stroke="#a9d0ff" stroke-width=".7"/>
+    <ellipse cx="8" cy="0" rx="5.5" ry="2.3" fill="#0b1d3f"/>
+    <ellipse cx="9.5" cy="-.5" rx="2.6" ry=".9" fill="#bfe6ff" opacity=".85"/>
+    <polygon points="-18,7.5 -32,9.5 -18,11.5" fill="#8fd4ff" opacity=".9"/>
+    <polygon points="-18,-11.5 -32,-9.5 -18,-7.5" fill="#8fd4ff" opacity=".9"/>
+  </g>
+
+  <!-- título -->
+  <g text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">
+    <text x="600" y="160" font-size="70" font-weight="800" letter-spacing="8" fill="url(#title)" filter="url(#glow)">SPACE DODGER</text>
+    <text x="600" y="212" font-size="22" font-weight="600" letter-spacing="7" fill="#8f97c4">COMBATE ESPACIAL LIVRE EM 360°</text>
+  </g>
+
+  <!-- inimigos (vermelho e preto) -->
+  <g filter="url(#glowR)" stroke-linejoin="round">
+    <g transform="translate(1040 110) rotate(180) scale(2.6)">
+      <polygon points="17,0 9,-3 11,-9 -3,-13 -12,-8 -8,0 -12,8 -3,13 11,9 9,3" fill="#0b0507" stroke="#ff3b30" stroke-width="1"/>
+      <ellipse cx="3" cy="0" rx="4.2" ry="1.8" fill="#ff3b30"/>
+    </g>
+    <g transform="translate(1120 215) rotate(180) scale(2.4)">
+      <polygon points="21,0 5,-3.5 0,-11 -5,-4.5 -13,-6 -8,0 -13,6 -5,4.5 0,11 5,3.5" fill="#0b0507" stroke="#ff2d55" stroke-width="1"/>
+      <line x1="-8" y1="0" x2="17" y2="0" stroke="#ff2d55" stroke-width="1.2"/>
+    </g>
+    <g transform="translate(985 235) rotate(180) scale(1.9)">
+      <polygon points="17,0 9,-3 11,-9 -3,-13 -12,-8 -8,0 -12,8 -3,13 11,9 9,3" fill="#0b0507" stroke="#ff3b30" stroke-width="1.2"/>
+      <ellipse cx="3" cy="0" rx="4.2" ry="1.8" fill="#ff3b30"/>
+    </g>
+  </g>
+  <g stroke="#ff3b30" stroke-width="3" stroke-linecap="round" filter="url(#glowR)" opacity=".9">
+    <line x1="1000" y1="108" x2="960" y2="108"/>
+    <line x1="945" y1="236" x2="905" y2="236"/>
+  </g>
+</svg>
