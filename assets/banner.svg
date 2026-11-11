@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="Space Dodger">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="Galaxy Divers">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#05061a"/>
@@ -62,7 +62,7 @@
 
   <!-- título -->
   <g text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">
-    <text x="600" y="160" font-size="70" font-weight="800" letter-spacing="8" fill="url(#title)" filter="url(#glow)">SPACE DODGER</text>
+    <text x="600" y="160" font-size="66" font-weight="800" letter-spacing="8" fill="url(#title)" filter="url(#glow)">GALAXY DIVERS</text>
     <text x="600" y="212" font-size="22" font-weight="600" letter-spacing="7" fill="#8f97c4">COMBATE ESPACIAL LIVRE EM 360°</text>
   </g>
 

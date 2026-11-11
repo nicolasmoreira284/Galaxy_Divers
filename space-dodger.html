@@ -1,4 +1,4 @@
-<title>Space Dodger</title>
+<title>Galaxy Divers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Michroma&display=swap">
@@ -44,6 +44,20 @@ body.playing #cv{cursor:none}
 #wbox.pop #wicon{animation:pop .22s ease-out}
 @keyframes pop{from{transform:scale(.55);opacity:.2}to{transform:none;opacity:1}}
 @media (prefers-reduced-motion:reduce){#wbox.pop #wicon,#hullBox.crit{animation:none}}
+.card.menu{width:min(420px,100%);text-align:center;justify-items:stretch}
+.menu-btns{display:grid;gap:10px}
+.menu-btn{display:grid;gap:3px;justify-items:center;padding:14px 18px}
+.menu-btn .b-t{font-family:var(--f-display);font-size:16px;letter-spacing:.18em;text-transform:uppercase}
+.menu-btn.big .b-t{font-size:21px}
+.menu-btn.big{padding:18px}
+.menu-btn .b-s{font-family:var(--f-ui);font-size:12px;letter-spacing:.06em;color:var(--muted);text-transform:none}
+.btn.ghost{border-color:var(--line);background:transparent;color:var(--muted)}
+.btn.ghost:hover{background:rgba(255,255,255,.06);color:var(--text)}
+#skinPrev{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:radial-gradient(ellipse at center,rgba(90,169,255,.14),rgba(7,8,22,.75))}
+.skin-info{display:grid;gap:2px;text-align:center}
+.skin-info b{font-family:var(--f-display);font-weight:400;letter-spacing:.12em;font-size:18px}
+.tile.skin canvas{width:64px;height:64px}
+.tile.skin.sel{border-color:var(--c);background:color-mix(in srgb,var(--c) 16%,transparent);box-shadow:0 0 14px color-mix(in srgb,var(--c) 40%,transparent)}
 .card.wide{width:min(640px,100%)}
 .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px}
 .tile{--c:var(--ship);display:grid;justify-items:center;gap:6px;padding:12px 6px 9px;border:1px solid var(--line);border-radius:6px;background:rgba(255,255,255,.03);color:var(--text);font-family:var(--f-ui);cursor:pointer}
@@ -134,7 +148,7 @@ kbd{font-family:var(--f-ui);font-size:12px;font-weight:600;min-width:22px;text-a
 @media (prefers-reduced-motion:reduce){#banner.show{animation-duration:2.6s}}
 </style>
 
-<canvas id="cv" aria-label="Área de jogo do Space Dodger"></canvas>
+<canvas id="cv" aria-label="Área de jogo do Galaxy Divers"></canvas>
 
 <div id="hud" hidden>
   <div class="hud-l">
@@ -194,10 +208,33 @@ kbd{font-family:var(--f-ui);font-size:12px;font-weight:600;min-width:22px;text-a
 </div>
 
 <section id="menu" class="ov">
-  <div class="card">
-    <p class="eyebrow">Combate livre em 360°</p>
-    <h1>SPACE<br><span>DODGER</span></h1>
-    <p class="tag">Pilote, esquive e derrube esquadrões inimigos, uma onda depois da outra. Cada onda vem maior.</p>
+  <div class="card menu">
+    <p class="eyebrow">Combate espacial livre em 360°</p>
+    <h1>GALAXY<br><span>DIVERS</span></h1>
+    <div class="menu-btns">
+      <button class="btn menu-btn big" id="startBtn"><span class="b-t">Jogar</span><span class="b-s">Começar uma partida</span></button>
+      <button class="btn menu-btn" id="skinsBtn"><span class="b-t">Naves</span><span class="b-s">Escolha a pintura da sua nave</span></button>
+      <button class="btn menu-btn" id="ctrlBtn"><span class="b-t">Controles</span><span class="b-s">Teclas, armas e dicas</span></button>
+    </div>
+    <p class="hi">Recorde: <b id="hiMenu">0</b></p>
+  </div>
+</section>
+
+<section id="skinsScr" class="ov" hidden>
+  <div class="card wide">
+    <p class="eyebrow">Hangar</p>
+    <h2>NAVES</h2>
+    <canvas id="skinPrev" width="360" height="220" aria-label="Prévia da nave escolhida"></canvas>
+    <div class="skin-info"><b id="skinName">Rebelde</b><span class="tag" id="skinDesc"></span></div>
+    <div class="shop-grid" id="skinGrid"></div>
+    <button class="btn ghost" id="skinsBack">Voltar</button>
+  </div>
+</section>
+
+<section id="ctrlScr" class="ov" hidden>
+  <div class="card wide">
+    <p class="eyebrow">Guia de voo</p>
+    <h2>CONTROLES</h2>
     <dl class="keys kb-only">
       <dt><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dt><dd>Mover a nave (cima, esquerda, baixo, direita)</dd>
       <dt><kbd>Mouse</kbd></dt><dd>Mirar. A nave sempre aponta para a mira</dd>
@@ -208,12 +245,11 @@ kbd{font-family:var(--f-ui);font-size:12px;font-weight:600;min-width:22px;text-a
       <dt><kbd>Scroll</kbd></dt><dd>Trocar de arma especial (ou <kbd>Q</kbd> <kbd>E</kbd>, <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd>)</dd>
       <dt><kbd>P</kbd><kbd>M</kbd></dt><dd>Pausar · Som</dd>
     </dl>
-    <p class="tag touch-only">Joystick à esquerda para pilotar. À direita: FOGO, BOOST e as manobras laterais ◀ ▶.</p>
+    <p class="tag touch-only">Joystick à esquerda para pilotar. À direita: FOGO, BOOST, as manobras laterais, ESPECIAL e TROCAR.</p>
     <p class="tip">Durante a manobra lateral a nave fica <b>invulnerável</b> por um instante. Passar raspando de um tiro inimigo vale <b>+50</b>.</p>
     <p class="tip">Asteroides machucam quem bater neles, inclusive os inimigos. Atraia os perseguidores para as rochas: cada <b>batida</b> que derruba um deles vale bônus.</p>
-    <p class="tip">Ao fim de cada onda você visita a <b>Oficina</b> e gasta seus pontos em casco, motores, energia, recarga e armas especiais (Esfera de Plasma, Laser e Rajada Tripla). A Esfera de Plasma <b>destrói asteroides</b> e os destroços ferem os inimigos.</p>
-    <button class="btn" id="startBtn">Decolar</button>
-    <p class="hi">Recorde: <b id="hiMenu">0</b></p>
+    <p class="tip">Ao fim de cada onda você visita a <b>Oficina</b> e gasta seus pontos em casco, motores, energia, recarga e armas especiais (Esfera de Plasma, Laser e Rajada Tripla).</p>
+    <button class="btn ghost" id="ctrlBack">Voltar</button>
   </div>
 </section>
 
@@ -222,6 +258,7 @@ kbd{font-family:var(--f-ui);font-size:12px;font-weight:600;min-width:22px;text-a
     <h2>PAUSADO</h2>
     <p class="tag">Aperte <kbd>P</kbd> ou o botão para continuar.</p>
     <button class="btn" id="resumeBtn">Continuar</button>
+    <button class="btn ghost" id="pauseMenuBtn">Menu principal</button>
   </div>
 </section>
 
@@ -248,6 +285,7 @@ kbd{font-family:var(--f-ui);font-size:12px;font-weight:600;min-width:22px;text-a
       <div class="stat"><span>ABATES</span><b id="oKills">0</b></div>
     </div>
     <button class="btn" id="againBtn">Jogar de novo</button>
+    <button class="btn ghost" id="menuBtn">Menu principal</button>
     <p class="hi">Recorde: <b id="hiOver">0</b></p>
   </div>
 </section>
@@ -273,6 +311,20 @@ const TYPES = {
   heavy:   { hp: 12, r: 28, spd: 130, turn: 1.1, acc: 160, score: 400, col: '#e02424' },
 };
 COL.orb = '#ff4fd8';
+const SKINS = [
+  { id: 'rebel',   name: 'Rebelde',   desc: 'O azul clássico da esquadra.',  glow: '#5aa9ff', body: '#3b82ff', wing: '#1a4fc4', pod: '#0f3a96', edge: '#a9d0ff', gun: '#d6e8ff', flame: '#8fd4ff' },
+  { id: 'emerald', name: 'Esmeralda', desc: 'Casco verde de patrulha.',       glow: '#3dffa0', body: '#17c47a', wing: '#0c7a4c', pod: '#075c38', edge: '#b5ffd9', gun: '#dcfff0', flame: '#9dffd0' },
+  { id: 'solar',   name: 'Solar',     desc: 'Dourado de piloto veterano.',    glow: '#ffc23d', body: '#f0a020', wing: '#b36a0c', pod: '#7a4608', edge: '#ffe2a0', gun: '#fff1cf', flame: '#ffd27a' },
+  { id: 'phantom', name: 'Fantasma',  desc: 'Violeta furtivo.',               glow: '#c08bff', body: '#8f5cf0', wing: '#4e2fa8', pod: '#331f73', edge: '#e2ccff', gun: '#f1e8ff', flame: '#d9b8ff' },
+  { id: 'silver',  name: 'Prata',     desc: 'Metal polido, sem enfeites.',    glow: '#dfe9ff', body: '#c9d4e6', wing: '#7f8ba3', pod: '#566176', edge: '#ffffff', gun: '#ffffff', flame: '#e6f1ff' },
+];
+let SK = SKINS[0];
+function applySkin(id, save) {
+  SK = SKINS.find(k => k.id === id) || SKINS[0];
+  COL.ship = SK.glow; COL.thrust = SK.flame;
+  if (save) { try { localStorage.setItem('galaxyDiversSkin', SK.id); } catch (e) {} }
+}
+try { applySkin(localStorage.getItem('galaxyDiversSkin')); } catch (e) { applySkin('rebel'); }
 const ORB_CHARGE = .9, ORB_CD = 14, ORB_R = 150, ORB_DMG = 8;
 const LASER_TIME = 1, LASER_DPS = 2.5, LASER_LEN = 1000, LASER_CD = 12, LASER_STUN = 1.5, TRIPLE_CD = 9;
 const DART_WIND = .9, DART_LOCK = .3, DART_DASH_V = 1150, DART_DASH_T = .5;
@@ -437,7 +489,7 @@ addEventListener('keydown', e => {
   }
   if (e.code === 'KeyP' || e.code === 'Escape') togglePause();
   if (e.code === 'KeyM') muted = !muted;
-  if (e.code === 'Enter' && (state === 'menu' || state === 'over')) start();
+  if (e.code === 'Escape' && state === 'menu' && curScr !== 'menu') showScreen('menu');
 });
 addEventListener('keyup', e => { keys[e.code] = false; });
 addEventListener('blur', () => { for (const k in keys) keys[k] = false; mouse.fire = mouse.charge = false; if (state === 'play') togglePause(); });
@@ -502,7 +554,7 @@ $('resumeBtn').addEventListener('click', togglePause);
 
 function start() {
   initAudio(); reset(); state = 'play';
-  ui.menu.hidden = true; ui.over.hidden = true; ui.pause.hidden = true; ui.shop.hidden = true; ui.hud.hidden = false;
+  ui.menu.hidden = true; $('skinsScr').hidden = true; $('ctrlScr').hidden = true; ui.over.hidden = true; ui.pause.hidden = true; ui.shop.hidden = true; ui.hud.hidden = false;
   ui.touch.hidden = !isTouch;
   document.body.classList.add('playing');
 }
@@ -596,6 +648,57 @@ $('shopGrid').addEventListener('click', e => {
   buy(b.dataset.buy);
 });
 $('nextBtn').addEventListener('click', nextWave);
+
+/* ---------- Menu principal, Naves e Controles ---------- */
+let curScr = 'menu', skinTiles = null;
+function showScreen(n) {
+  curScr = n;
+  ui.menu.hidden = n !== 'menu'; $('skinsScr').hidden = n !== 'skins'; $('ctrlScr').hidden = n !== 'controls';
+  if (n === 'skins') { buildSkins(); refreshSkins(); }
+  const f = n === 'menu' ? 'startBtn' : n === 'skins' ? 'skinsBack' : 'ctrlBack';
+  setTimeout(() => $(f).focus(), 30);
+}
+function buildSkins() {
+  if (skinTiles) return;
+  skinTiles = [];
+  const grid = $('skinGrid');
+  for (const k of SKINS) {
+    const b = document.createElement('button');
+    b.className = 'tile skin'; b.dataset.skin = k.id; b.style.setProperty('--c', k.glow); b.setAttribute('aria-label', k.name);
+    const cv2 = document.createElement('canvas'); cv2.width = 96; cv2.height = 96;
+    const c = cv2.getContext('2d'); c.translate(48, 50); c.rotate(-Math.PI / 2); c.scale(1.55, 1.55);
+    paintShip(c, k, { flame: 0 });
+    const nm = document.createElement('span'); nm.className = 'price'; nm.textContent = k.name;
+    b.appendChild(cv2); b.appendChild(nm); grid.appendChild(b); skinTiles.push({ id: k.id, el: b });
+  }
+}
+function refreshSkins() {
+  for (const t of skinTiles) t.el.classList.toggle('sel', t.id === SK.id);
+  $('skinName').textContent = SK.name; $('skinDesc').textContent = SK.desc;
+}
+const skinPrev = $('skinPrev'), spx = skinPrev.getContext('2d');
+function drawSkinPreview(t) {
+  spx.setTransform(1, 0, 0, 1, 0, 0); spx.clearRect(0, 0, skinPrev.width, skinPrev.height);
+  spx.save(); spx.translate(skinPrev.width / 2, skinPrev.height / 2 + Math.sin(t / 700) * 6);
+  spx.rotate(-Math.PI / 2 + Math.sin(t / 1100) * .1); spx.scale(3.7, 3.7);
+  paintShip(spx, SK, { flame: 14 + Math.random() * 5 });
+  spx.restore();
+}
+$('skinGrid').addEventListener('click', e => {
+  const b = e.target && e.target.closest && e.target.closest('button[data-skin]');
+  if (b) { applySkin(b.dataset.skin, true); refreshSkins(); }
+});
+function toMenu() {
+  reset(); state = 'menu'; document.body.classList.remove('playing');
+  ui.hud.hidden = true; ui.touch.hidden = true; ui.pause.hidden = true; ui.over.hidden = true; ui.shop.hidden = true;
+  hideTip(); $('hiMenu').textContent = hi; showScreen('menu');
+}
+$('skinsBtn').addEventListener('click', () => showScreen('skins'));
+$('ctrlBtn').addEventListener('click', () => showScreen('controls'));
+$('skinsBack').addEventListener('click', () => showScreen('menu'));
+$('ctrlBack').addEventListener('click', () => showScreen('menu'));
+$('menuBtn').addEventListener('click', toMenu);
+$('pauseMenuBtn').addEventListener('click', toMenu);
 
 function banner(text, sub) {
   ui.banner.innerHTML = text + (sub ? `<small>${sub}</small>` : '');
@@ -1055,46 +1158,49 @@ const SHIP = {
 };
 function poly(c, pts) { c.moveTo(pts[0][0], pts[0][1]); for (let i = 1; i < pts.length; i++) c.lineTo(pts[i][0], pts[i][1]); c.closePath(); }
 function playerPath(c) { c.beginPath(); poly(c, SHIP.body); poly(c, SHIP.wing(1)); poly(c, SHIP.wing(-1)); }
+function paintShip(c, pal, o) {
+  const edge = o.edge || pal.edge;
+  if (o.flame > 0) {
+    c.globalCompositeOperation = 'lighter';
+    for (const s of [-1, 1]) {
+      c.fillStyle = o.boost ? COL.boost : pal.flame; c.globalAlpha = .9;
+      c.beginPath(); c.moveTo(-18, 9.5 * s - 2.2); c.lineTo(-18 - o.flame, 9.5 * s); c.lineTo(-18, 9.5 * s + 2.2); c.fill();
+      c.fillStyle = '#ffffff'; c.globalAlpha = .8;
+      c.beginPath(); c.moveTo(-18, 9.5 * s - 1); c.lineTo(-18 - o.flame * .45, 9.5 * s); c.lineTo(-18, 9.5 * s + 1); c.fill();
+    }
+    c.globalAlpha = 1; c.globalCompositeOperation = 'source-over';
+  }
+  c.lineJoin = 'round'; c.lineCap = 'round';
+  c.shadowColor = pal.glow; c.shadowBlur = 14;
+  for (const s of [-1, 1]) {            // asas
+    c.beginPath(); poly(c, SHIP.wing(s)); c.fillStyle = pal.wing; c.fill();
+    c.lineWidth = 1.5; c.strokeStyle = edge; c.stroke();
+  }
+  c.shadowBlur = 0;
+  for (const s of [-1, 1]) {            // canhões nas pontas das asas
+    c.strokeStyle = pal.gun; c.lineWidth = 1.8;
+    c.beginPath(); c.moveTo(-8, 19 * s); c.lineTo(14, 19 * s); c.stroke();
+  }
+  for (const s of [-1, 1]) {            // motores
+    c.beginPath(); c.rect(-18, 9.5 * s - 2.5, 17, 5);
+    c.fillStyle = pal.pod; c.fill(); c.lineWidth = 1.2; c.strokeStyle = edge; c.stroke();
+    c.fillStyle = pal.flame; c.fillRect(-18, 9.5 * s - 1.5, 2, 3);
+  }
+  c.shadowColor = pal.glow; c.shadowBlur = 10;
+  c.beginPath(); poly(c, SHIP.body); c.fillStyle = pal.body; c.fill();            // fuselagem
+  c.lineWidth = 1.6; c.strokeStyle = edge; c.stroke(); c.shadowBlur = 0;
+  c.strokeStyle = 'rgba(255,255,255,.35)'; c.lineWidth = 1;
+  c.beginPath(); c.moveTo(-12, 0); c.lineTo(24, 0); c.stroke();
+  c.fillStyle = '#0b1d3f'; c.beginPath(); c.ellipse(8, 0, 5.5, 2.3, 0, 0, TAU); c.fill();   // cabine
+  c.fillStyle = 'rgba(190,230,255,.85)'; c.beginPath(); c.ellipse(9.5, -.5, 2.6, .9, 0, 0, TAU); c.fill();
+}
 function drawPlayer() {
   if (!P.alive) return;
   if (P.grace > 0 && Math.floor(P.grace * 20) % 2 === 0) return;
   ctx.save(); ctx.translate(P.x, P.y); ctx.rotate(P.a);
   if (P.dashT > 0) { const ph = 1 - P.dashT / DASH_TIME; ctx.scale(1, Math.cos(ph * TAU) * P.rollDir || .05); }
-  if (P.thrust > 0 && Math.cos(P.a) * P.ix + Math.sin(P.a) * P.iy > .3) {
-    const L = (P.boosting ? 30 : 12) + Math.random() * 6;
-    ctx.globalCompositeOperation = 'lighter';
-    for (const s of [-1, 1]) {
-      ctx.fillStyle = P.boosting ? COL.boost : COL.thrust; ctx.globalAlpha = .9;
-      ctx.beginPath(); ctx.moveTo(-18, 9.5 * s - 2.2); ctx.lineTo(-18 - L, 9.5 * s); ctx.lineTo(-18, 9.5 * s + 2.2); ctx.fill();
-      ctx.fillStyle = '#ffffff'; ctx.globalAlpha = .8;
-      ctx.beginPath(); ctx.moveTo(-18, 9.5 * s - 1); ctx.lineTo(-18 - L * .45, 9.5 * s); ctx.lineTo(-18, 9.5 * s + 1); ctx.fill();
-    }
-    ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
-  }
-  const edge = P.dashT > 0 ? '#ffffff' : '#a9d0ff';
-  ctx.lineJoin = 'round'; ctx.lineCap = 'round';
-  ctx.shadowColor = COL.ship; ctx.shadowBlur = 14;
-  for (const s of [-1, 1]) {            // asas
-    ctx.beginPath(); poly(ctx, SHIP.wing(s)); ctx.fillStyle = '#1a4fc4'; ctx.fill();
-    ctx.lineWidth = 1.5; ctx.strokeStyle = edge; ctx.stroke();
-  }
-  ctx.shadowBlur = 0;
-  for (const s of [-1, 1]) {            // canhões nas pontas das asas
-    ctx.strokeStyle = '#d6e8ff'; ctx.lineWidth = 1.8;
-    ctx.beginPath(); ctx.moveTo(-8, 19 * s); ctx.lineTo(14, 19 * s); ctx.stroke();
-  }
-  for (const s of [-1, 1]) {            // motores
-    ctx.beginPath(); ctx.rect(-18, 9.5 * s - 2.5, 17, 5);
-    ctx.fillStyle = '#0f3a96'; ctx.fill(); ctx.lineWidth = 1.2; ctx.strokeStyle = edge; ctx.stroke();
-    ctx.fillStyle = '#8fc8ff'; ctx.fillRect(-18, 9.5 * s - 1.5, 2, 3);
-  }
-  ctx.shadowColor = COL.ship; ctx.shadowBlur = 10;
-  ctx.beginPath(); poly(ctx, SHIP.body); ctx.fillStyle = '#3b82ff'; ctx.fill();     // fuselagem
-  ctx.lineWidth = 1.6; ctx.strokeStyle = edge; ctx.stroke(); ctx.shadowBlur = 0;
-  ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(-12, 0); ctx.lineTo(24, 0); ctx.stroke();
-  ctx.fillStyle = '#0b1d3f'; ctx.beginPath(); ctx.ellipse(8, 0, 5.5, 2.3, 0, 0, TAU); ctx.fill();  // cabine
-  ctx.fillStyle = 'rgba(190,230,255,.85)'; ctx.beginPath(); ctx.ellipse(9.5, -.5, 2.6, .9, 0, 0, TAU); ctx.fill();
+  const fwd = P.thrust > 0 && Math.cos(P.a) * P.ix + Math.sin(P.a) * P.iy > .3;
+  paintShip(ctx, SK, { edge: P.dashT > 0 ? '#ffffff' : SK.edge, flame: fwd ? (P.boosting ? 30 : 12) + Math.random() * 6 : 0, boost: P.boosting });
   if (P.charge > 0) {
     const r = 3 + P.charge * 9 + (P.charge >= 1 ? Math.sin(performance.now() / 60) * 2 : 0);
     ctx.globalCompositeOperation = 'lighter';
@@ -1390,7 +1496,7 @@ let last = performance.now();
 function frame(now) {
   const dt = Math.min(.033, (now - last) / 1000); last = now;
   if (state === 'play' || state === 'dying') update(dt);
-  else if (state === 'menu') { cam.x += 22 * dt; cam.y -= 9 * dt; }
+  else if (state === 'menu') { cam.x += 22 * dt; cam.y -= 9 * dt; if (curScr === 'skins') drawSkinPreview(now); }
   render();
   if (state !== 'menu') { renderMinimap(); updateHud(); }
   requestAnimationFrame(frame);

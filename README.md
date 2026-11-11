@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="Space Dodger" width="100%">
+<img src="assets/banner.svg" alt="Galaxy Divers" width="100%">
 
 ### Pilote, esquive e destrua esquadrões alienígenas, onda após onda.
 
@@ -9,7 +9,7 @@
 ![Sem dependências](https://img.shields.io/badge/depend%C3%AAncias-zero-5aa9ff?style=for-the-badge)
 ![Arquivo único](https://img.shields.io/badge/arquivo-%C3%BAnico-7cff9b?style=for-the-badge)
 
-**[▶ Como jogar](#-como-jogar)** · **[🎮 Controles](#-controles)** · **[🛠 Oficina](#-oficina-de-melhorias)** · **[👾 Inimigos](#-inimigos)**
+**[▶ Como jogar](#-como-jogar)** · **[🏠 Menu](#-menu-principal)** · **[🎮 Controles](#-controles)** · **[🛠 Oficina](#-oficina-de-melhorias)** · **[👾 Inimigos](#-inimigos)**
 
 </div>
 
@@ -17,7 +17,7 @@
 
 ## 🚀 O jogo
 
-**Space Dodger** é um jogo de combate espacial em visão de cima, com **movimento livre em 360°**, inércia de verdade e uma nave azul inspirada nos caças da rebelião. Você enfrenta ondas cada vez maiores de naves alienígenas vermelhas e pretas, usa asteroides a seu favor e gasta seus pontos numa **Oficina** entre as ondas para ficar mais forte.
+**Galaxy Divers** é um jogo de combate espacial em visão de cima, com **movimento livre em 360°**, inércia de verdade e uma nave azul inspirada nos caças da rebelião. Você enfrenta ondas cada vez maiores de naves alienígenas vermelhas e pretas, usa asteroides a seu favor e gasta seus pontos numa **Oficina** entre as ondas para ficar mais forte.
 
 Tudo roda no navegador, em **um único arquivo HTML**, sem instalar nada.
 
@@ -28,12 +28,32 @@ Tudo roda no navegador, em **um único arquivo HTML**, sem instalar nada.
 
 </div>
 
+## 🏠 Menu principal
+
+Ao abrir o jogo você cai no menu principal, com três opções:
+
+| Botão | O que faz |
+|---|---|
+| **Jogar** | Começa uma partida |
+| **Naves** | Abre o **Hangar**: escolha a pintura da sua nave (Rebelde, Esmeralda, Solar, Fantasma ou Prata), com uma prévia animada. A escolha fica salva no navegador |
+| **Controles** | Mostra as teclas, as armas especiais e as dicas de voo |
+
+Durante o jogo, a tela de pausa e a de fim de partida têm um botão **Menu principal** para voltar.
+
+<div align="center">
+
+<img src="assets/menu.jpg" alt="Menu principal" width="49%">
+<img src="assets/naves.jpg" alt="Hangar de naves" width="49%">
+
+</div>
+
 ## ✨ Destaques
 
 - 🎯 **Mira livre com o mouse** e movimento por WASD, para fugir para um lado e atirar para o outro.
 - 🌀 **Manobra lateral com giro** (`C`): deixa a nave invulnerável por um instante. Esquivar de um tiro de raspão dá bônus.
 - 🔥 **Boost** que gasta energia, para escapar ou fechar a distância.
 - ☄️ **Asteroides perigosos**: batem em você, mas também nos inimigos. Atraia perseguidores para as rochas.
+- 🎨 **Hangar de naves** com cinco pinturas e prévia animada.
 - 🛠 **Oficina entre as ondas**: melhore casco, motores, energia e recarga, e compre armas especiais.
 - 💥 **Três armas especiais** com recargas independentes, trocadas pelo scroll do mouse.
 - 👾 **Inimigos com comportamentos diferentes**, incluindo uma investida que só se evita no tempo certo.
@@ -121,7 +141,7 @@ Todos vermelhos e pretos, com visual de naves alienígenas.
 - HTML5 `<canvas>` e JavaScript puro, **sem bibliotecas nem build**.
 - Áudio gerado em tempo real com a Web Audio API.
 - Ícones e a nave desenhados em código (SVG e Canvas), sem imagens externas.
-- Recorde guardado no `localStorage` do navegador.
+- Recorde e pintura da nave guardados no `localStorage` do navegador.
 
 ---
 
