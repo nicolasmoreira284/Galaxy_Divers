@@ -112,7 +112,7 @@ As teclas abaixo são as **padrão**. Em **Controles**, no menu principal ou na 
 
 `P`, `M`, `Esc` e `1` `2` `3` são reservadas e não podem ser atribuídas a outras ações.
 
-**No celular**, os controles aparecem na tela: joystick à esquerda para pilotar e, à direita, os botões FOGO, BOOST, as manobras laterais (ESQ e DIR), ESPECIAL e TROCAR. O botão **II**, no topo, pausa o jogo, e o aparelho vibra quando você leva dano.
+**No celular**, os controles aparecem na tela: joystick à esquerda para pilotar e, à direita, os botões FOGO, BOOST, as manobras laterais (ESQ e DIR), ESPECIAL e TROCAR. O botão **II**, no topo, pausa o jogo, e o aparelho vibra quando você leva dano. Jogue com o celular **na horizontal**: ao iniciar a partida o jogo entra em tela cheia (quando o navegador permite), a visão se afasta para mostrar mais do mapa e o HUD e os menus ficam compactos.
 
 ### Pausa e volume
 
