@@ -1,5 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Jogue Galaxy Divers: combate espacial em pixel art com movimento livre em 360°, ondas de inimigos, chefe e controles para PC e celular. Direto no navegador, sem instalar nada.">
 <title>Galaxy Divers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -611,7 +612,7 @@ function applySkin(id, save) {
 }
 try { applySkin(localStorage.getItem('galaxyDiversSkin')); } catch (e) { applySkin('rebel'); }
 const ORB_CHARGE = .9, ORB_CD = 14, ORB_R = 150, ORB_DMG = 8;
-const LASER_TIME = 1, LASER_DPS = 2.5, LASER_LEN = 1000, LASER_CD = 12, LASER_STUN = 1.5, TRIPLE_CD = 9;
+const LASER_TIME = 1, LASER_DPS = 2.5, LASER_LEN = 650, LASER_CD = 12, LASER_STUN = 1.5, TRIPLE_CD = 9;
 const DART_WIND = .9, DART_LOCK = .3, DART_DASH_V = 1150, DART_DASH_T = .5;
 let dartGate = 0;
 const WORDER = ['plasma', 'laser', 'triple'];
@@ -1344,8 +1345,8 @@ function tryDash(dir) {
   P.dashT = DASH_TIME; P.dashCd = .6; P.en -= DASH_COST * effMul(); P.regenDelay = .6; P.rollDir = dir;
   sfx.dash();
 }
-function fireEnemy(x, y, a, spd, dmg, col) {
-  ebullets.push({ x, y, vx: Math.cos(a) * spd, vy: Math.sin(a) * spd, life: 2.6, dmg, col, dodged: false });
+function fireEnemy(x, y, a, spd, dmg, col, life) {
+  ebullets.push({ x, y, vx: Math.cos(a) * spd, vy: Math.sin(a) * spd, life: life || 1.7, dmg, col, dodged: false });
 }
 function spawnEnemy(type) {
   let x, y, tries = 0;
@@ -1438,7 +1439,7 @@ function launchOrb() {
   const c = Math.cos(P.a), s = Math.sin(P.a);
   let range = 520;
   if (mouse.seen && !isTouch) range = Math.hypot(cam.x + mouse.x - W / 2 - P.x, cam.y + mouse.y - H / 2 - P.y);
-  orbs.push({ x: P.x + c * 22, y: P.y + s * 22, vx: c * 580, vy: s * 580, range: clamp(range, 110, 1100), dist: 0, life: 2.5, t: 0 });
+  orbs.push({ x: P.x + c * 22, y: P.y + s * 22, vx: c * 580, vy: s * 580, range: clamp(range, 110, 650), dist: 0, life: 2.5, t: 0 });
   startCd('plasma', ORB_CD); P.vx -= c * 120; P.vy -= s * 120; shake = Math.max(shake, 6); sfx.orb();
 }
 function destroyAsteroid(a) {
@@ -1456,7 +1457,7 @@ function fireSpecial(w) {
     const c = Math.cos(P.a), s = Math.sin(P.a);
     for (const d of [-.17, 0, .17]) {
       const a = P.a + d;
-      bullets.push({ x: P.x + c * 18, y: P.y + s * 18, vx: Math.cos(a) * 1150 + P.vx, vy: Math.sin(a) * 1150 + P.vy, life: 1.1, dmg: 4, big: true });
+      bullets.push({ x: P.x + c * 18, y: P.y + s * 18, vx: Math.cos(a) * 1150 + P.vx, vy: Math.sin(a) * 1150 + P.vy, life: .6, dmg: 4, big: true });
     }
     startCd('triple', TRIPLE_CD); P.vx -= c * 160; P.vy -= s * 160;
     shake = Math.max(shake, 7); burst(P.x + c * 20, P.y + s * 20, '#ffb45e', 12, 260); sfx.triple();
@@ -1562,7 +1563,7 @@ function update(dt) {
       P.fire = .13; P.gun = -P.gun;
       const c = Math.cos(P.a), s = Math.sin(P.a), ox = -s * 19 * P.gun, oy = c * 19 * P.gun;
       const ba = P.a - P.gun * .045, bc = Math.cos(ba), bs = Math.sin(ba);
-      bullets.push({ x: P.x + c * 14 + ox, y: P.y + s * 14 + oy, vx: bc * 980 + P.vx, vy: bs * 980 + P.vy, life: .9 });
+      bullets.push({ x: P.x + c * 14 + ox, y: P.y + s * 14 + oy, vx: bc * 980 + P.vx, vy: bs * 980 + P.vy, life: .5 });
       sfx.shoot();
     }
 
@@ -1682,7 +1683,7 @@ function update(dt) {
         e.cd = rand(1.1, 1.9) * Math.max(.6, 1 - wave * .03); fireEnemy(e.x + Math.cos(e.a) * 14, e.y + Math.sin(e.a) * 14, e.a, bSpd, 10, T.col);
       }
       if (e.type === 'heavy' && e.cd <= 0 && dist < 760) {
-        e.cd = rand(2.2, 2.9); for (let i = -2; i <= 2; i++) fireEnemy(e.x, e.y, toP + i * .17, bSpd * .72, 8, T.col);
+        e.cd = rand(2.2, 2.9); for (let i = -2; i <= 2; i++) fireEnemy(e.x, e.y, toP + i * .17, bSpd * .72, 8, T.col, 2.2);
       }
       if (e.type === 'boss') {
         const rage = e.hp < e.max * .5;
@@ -1690,13 +1691,13 @@ function update(dt) {
         if (e.cd <= 0 && dist < 950) {
           e.cd = rage ? 1.0 : 1.5;
           const n = rage ? 2 : 1;
-          for (let i = -n; i <= n; i++) fireEnemy(e.x + Math.cos(e.a) * 50, e.y + Math.sin(e.a) * 50, toP + i * .2, bSpd * (rage ? .95 : .8), 10, T.col);
+          for (let i = -n; i <= n; i++) fireEnemy(e.x + Math.cos(e.a) * 50, e.y + Math.sin(e.a) * 50, toP + i * .2, bSpd * (rage ? .95 : .8), 10, T.col, 2.2);
         }
         e.abCd -= dt;
         if (e.abCd <= 0) {
           e.abCd = rage ? 4.2 : 6;
           const m = rage ? 26 : 18, off = Math.random() * TAU;
-          for (let i = 0; i < m; i++) fireEnemy(e.x, e.y, off + i * TAU / m, 250, 8, '#ff4d6d');
+          for (let i = 0; i < m; i++) fireEnemy(e.x, e.y, off + i * TAU / m, 250, 8, '#ff4d6d', 2.6);
           ring(e.x, e.y, '#ff4d6d', 130); shake = Math.max(shake, 6); sfx.warn();
         }
         if (rage) {

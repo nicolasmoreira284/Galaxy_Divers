@@ -54,7 +54,7 @@ O menu também tem o seu **nível de piloto** (com a barra de XP) e o controle d
 
 ## ✨ Destaques
 
-- 🎯 **Mira livre com o mouse** e movimento por WASD, para fugir para um lado e atirar para o outro.
+- 🎯 **Mira livre com o mouse** e movimento por WASD, para fugir para um lado e atirar para o outro. Os tiros têm **alcance limitado** (cerca de metade da tela), então não dá para atirar de longe: é preciso chegar perto.
 - 🌀 **Manobra lateral com giro**: deixa a nave invulnerável por um instante. Esquivar de um tiro de raspão dá bônus.
 - 🔥 **Boost** que gasta energia, para escapar ou fechar a distância.
 - ☄️ **Asteroides perigosos**: batem em você, mas também nos inimigos. Atraia perseguidores para as rochas.
@@ -175,7 +175,7 @@ Cada partida rende **XP igual aos pontos** que você fez, e o XP é acumulado en
 
 ## 💣 Armas especiais
 
-As três são compradas na Oficina. Cada uma tem **recarga própria**, que continua contando mesmo quando você troca de arma. Só o ícone da arma selecionada aparece no canto da tela.
+As três são compradas na Oficina. Todas têm **alcance limitado**: a Esfera de Plasma e o Laser chegam a no máximo 650 px, e a Rajada Tripla a cerca de 700 px. Cada uma tem **recarga própria**, que continua contando mesmo quando você troca de arma. Só o ícone da arma selecionada aparece no canto da tela.
 
 | Arma | O que faz | Recarga |
 |---|---|---|
@@ -231,6 +231,7 @@ Na **onda 15** o jogo avisa "ALERTA: CHEFE" e o Devorador entra: uma canhoneira 
 
 ## 🧠 Dicas de piloto
 
+- Não adianta ficar parado num canto atirando de longe: os tiros têm alcance curto (e os dos inimigos também). Aproxime-se, mas use as rochas e a manobra lateral.
 - Use a manobra lateral **no instante em que o tiro ou a investida chega**. Esquivar de raspão dá pontos extras.
 - **Leve os inimigos para os asteroides.** Quem bate numa rocha toma dano, e o interceptador explode.
 - Derrubar inimigos em sequência aumenta o **combo** (até x5).

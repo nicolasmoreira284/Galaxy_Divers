@@ -10,6 +10,7 @@ Jogo de combate espacial em pixel art, em um único arquivo: `space-dodger.html`
 - `scripts/capturar-telas.js`: copia o jogo para `site/jogo/index.html` e refaz as capturas de tela em `assets/` e `site/assets/`
   (`node scripts/capturar-telas.js`, precisa do Chrome ou do Edge; defina `CHROME_PATH` se não achar).
 - `firebase.json` e `.firebaserc`: Hosting do projeto `galaxy-divers`.
+- `site/robots.txt`, `site/sitemap.xml` e `site/assets/og.jpg`: SEO e pré-visualização de links. Ao atualizar o site, atualize o `lastmod` do sitemap.
 
 ## Documentação
 Quando o usuário pedir para atualizar a documentação (ou usar `/atualizar-docs`), atualize o README, a landing page
