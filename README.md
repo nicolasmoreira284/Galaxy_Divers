@@ -12,7 +12,7 @@
 
 <a href="https://galaxy-divers.web.app/jogo/?modo=pc"><b>▶ JOGAR NO PC</b></a> &nbsp;·&nbsp; <a href="https://galaxy-divers.web.app/jogo/?modo=celular"><b>📱 JOGAR NO CELULAR</b></a> &nbsp;·&nbsp; <a href="https://galaxy-divers.web.app"><b>🌐 LANDING PAGE</b></a>
 
-**[▶ Como jogar](#-como-jogar)** · **[🏠 Menu](#-menu-principal)** · **[🎮 Controles](#-controles)** · **[🏅 Vidas e progresso](#-vidas-recordes-e-nível-de-piloto)** · **[🛠 Oficina](#-oficina-de-melhorias)** · **[👾 Inimigos](#-inimigos)** · **[👑 Chefe](#-chefe-o-devorador)**
+**[▶ Como jogar](#-como-jogar)** · **[🏠 Menu](#-menu-principal)** · **[🎮 Controles](#-controles)** · **[🏅 Vidas e progresso](#-vidas-recordes-e-nível-de-piloto)** · **[🛠 Oficina](#-oficina-de-melhorias)** · **[👾 Inimigos](#-inimigos)** · **[👑 Chefe](#-chefe-o-devorador)** · **[📚 Docs](#-documentação-e-histórico-de-alterações)**
 
 </div>
 
@@ -239,6 +239,15 @@ Na **onda 15** o jogo avisa "ALERTA: CHEFE" e o Devorador entra: uma canhoneira 
 - Guarde pontos para a **Esfera de Plasma**: ela limpa grupos e rochas de uma vez.
 - Depois de perder uma vida, aproveite a proteção do renascimento para se afastar dos inimigos.
 - Contra o chefe, **chegue à onda 15 com a Oficina em dia**: casco, recarga especial e uma arma especial comprada fazem diferença. Fique em movimento e atravesse os anéis pelas brechas.
+
+## 📚 Documentação e histórico de alterações
+
+| Documento | O que tem |
+|---|---|
+| [README](README.md) | Este guia do jogador: como jogar, controles, Oficina, inimigos e chefe |
+| [Histórico de alterações](CHANGELOG.md) | O que mudou em cada versão, da 0.1.0 até a mais recente |
+| [Guia de desenvolvimento](docs/DESENVOLVIMENTO.md) | Estrutura do código, regras e valores do jogo, o que é salvo no navegador, desempenho e como publicar |
+| [Commits](https://github.com/nicolasmoreira284/Galaxy_Divers/commits/main) | Todas as mudanças, uma a uma, direto do Git |
 
 ## 🧩 Detalhes técnicos
 
