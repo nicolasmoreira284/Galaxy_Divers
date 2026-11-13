@@ -78,8 +78,8 @@ O menu também tem o seu **nível de piloto** (com a barra de XP) e o controle d
 **Opção 2: clonar**
 
 ```bash
-git clone https://github.com/nicolasmoreira284/Space-Dodger.git
-cd Space-Dodger
+git clone https://github.com/nicolasmoreira284/Galaxy_Divers.git
+cd Galaxy_Divers
 ```
 
 Depois abra o `space-dodger.html` no seu navegador (Chrome, Edge, Firefox ou Safari).
