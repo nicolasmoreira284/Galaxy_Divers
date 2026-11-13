@@ -135,7 +135,8 @@ kbd{font-family:var(--f-ui);font-size:12px;font-weight:600;min-width:22px;text-a
 .stat b{font-family:var(--f-display);font-size:18px;font-weight:400;font-variant-numeric:tabular-nums}
 .rec{color:var(--boost);font-size:13px;letter-spacing:.2em;margin:0}
 .touch-only{display:none}
-@media (pointer:coarse){.touch-only{display:block}.kb-only{display:none}}
+body.touch .touch-only{display:block}
+body.touch .kb-only{display:none}
 
 /* Toque */
 #touch{position:fixed;inset:0;pointer-events:none}
@@ -256,7 +257,7 @@ html,body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webk
 #tbtns{grid-template-columns:repeat(2,80px)}
 .tb{font-size:13px;padding:0 4px;letter-spacing:.02em;white-space:nowrap}
 #tPause{position:absolute;left:50%;top:calc(10px + env(safe-area-inset-top,0px));transform:translateX(-50%);width:60px;height:44px;pointer-events:auto;font-family:var(--f-display);font-size:12px}
-@media (pointer:coarse){.btn{padding:16px 18px}.menu-btn{padding:14px 18px}.tile{padding:14px 6px 10px}}
+body.touch .btn{padding:16px 18px}body.touch .menu-btn{padding:14px 18px}body.touch .tile{padding:14px 6px 10px}
 
 /* ===== Volume ===== */
 .vol{display:flex;align-items:center;gap:10px;justify-content:center;color:var(--text)}
@@ -274,70 +275,85 @@ html,body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webk
 #pause .vol{margin:2px 0 4px}
 
 /* ===== Celular na horizontal: tudo menor ===== */
-@media (pointer:coarse) and (max-height:520px){
-  #hud{padding:max(6px,env(safe-area-inset-top,0px)) max(10px,env(safe-area-inset-right,0px)) 0 max(10px,env(safe-area-inset-left,0px));gap:8px}
-  .hud-l{width:140px;gap:4px}
-  .icons{gap:8px}
-  .sq{width:46px;height:46px;border-width:2px;box-shadow:inset 0 0 0 1px #8fb8ff,2px 2px 0 var(--ink)}
-  #hullBox{padding:2px}
-  .cap,.lbl{font-size:8px;text-shadow:1px 1px 0 var(--ink)}
-  .meter{gap:2px}
-  .bar{height:10px;border-width:2px;box-shadow:2px 2px 0 var(--ink)}
-  .lives{gap:3px}
-  .hrt{width:15px;height:15px}
-  .hud-r{gap:3px}
-  #score{font-size:17px}
-  #waveLbl{font-size:9px}
-  #mm{width:78px;height:78px;border-width:2px;box-shadow:inset 0 0 0 1px #8fb8ff,2px 2px 0 var(--ink)}
-  #wsec{font-size:11px}
-  #banner{top:16%;font-size:15px}
-  #banner small{font-size:11px;margin-top:4px}
-  #stickBase{width:100px;height:100px;left:calc(26px + env(safe-area-inset-left,0px));bottom:12px;border-width:2px}
-  #stickKnob{width:42px;height:42px;left:27px;top:27px;border-width:2px}
-  #tbtns{grid-template-columns:repeat(3,62px);gap:6px;right:max(10px,env(safe-area-inset-right,0px));bottom:10px}
-  .tb,.tb.big{height:44px;font-size:10px;border-width:2px;box-shadow:inset -2px -2px 0 #a9c8ff,2px 2px 0 var(--ink)}
-  #tDashL{order:1}#tDashR{order:2}#tSwap{order:3}#tBoost{order:4}#tOrb{order:5}#tFire{order:6}
-  #tPause{width:46px;height:32px;top:6px;font-size:10px}
-  .ov{padding:8px max(10px,env(safe-area-inset-right,0px)) 8px max(10px,env(safe-area-inset-left,0px))}
-  .card{padding:12px 16px;gap:8px;box-shadow:inset 3px 3px 0 #fff,inset -3px -3px 0 #b9c8ff,5px 5px 0 var(--ink)}
-  h1{font-size:20px}
-  h1 br{display:none}
-  h1 span{margin-left:.45em}
-  h2{font-size:14px}
-  .eyebrow{font-size:8px}
-  .tag{font-size:13px}
-  .btn{padding:9px 12px;font-size:10px;border-width:2px;box-shadow:inset -3px -3px 0 #a9c8ff,3px 3px 0 var(--ink)}
-  .card.menu{width:min(640px,100%);gap:8px}
-  .card.menu .eyebrow{display:none}
-  .menu-btns{grid-template-columns:repeat(3,1fr);gap:8px}
-  .menu-btn{padding:8px 10px}
-  .menu-btn .b-t{font-size:11px}
-  .menu-btn .b-s{display:none}
-  .menu-btn.big{grid-column:1/-1;padding:10px}
-  .menu-btn.big .b-t{font-size:14px}
-  .vol{gap:8px}
-  .vol .vl{font-size:8px}
-  .vol .vb{padding:5px 7px}
-  .pilot{gap:3px}
-  .pilot .p-t{font-size:8px}
-  .pilot small{display:none}
-  .hi{font-size:11px}
-  #pause .card{width:min(560px,100%);grid-template-columns:1fr 1fr}
-  #pause .card>h2,#pause .card>p,#pause .card>.vol{grid-column:1/-1}
-  .card.over{width:min(640px,100%)}
-  .stat{padding:6px}
-  .stat b,.pts b{font-size:12px}
-  .rank li{padding:3px 8px;font-size:13px;grid-template-columns:34px 1fr auto 48px}
-  #rankOver li:nth-child(n+4){display:none}
-  .lvl-grid{grid-template-columns:repeat(8,1fr);gap:6px}
-  .lvl{font-size:6px;gap:3px}
-  .lvl .circ{font-size:0}
-  .shop-grid{grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px}
-  .tile{padding:8px 4px 6px}
-  .tile .ico{width:30px;height:30px}
-  .tile.skin canvas{width:44px;height:44px}
-  #skinPrev{max-height:100px;width:auto;margin:0 auto}
+@media (max-height:520px){
+  body.touch #hud{padding:max(6px,env(safe-area-inset-top,0px)) max(10px,env(safe-area-inset-right,0px)) 0 max(10px,env(safe-area-inset-left,0px));gap:8px}
+  body.touch .hud-l{width:140px;gap:4px}
+  body.touch .icons{gap:8px}
+  body.touch .sq{width:46px;height:46px;border-width:2px;box-shadow:inset 0 0 0 1px #8fb8ff,2px 2px 0 var(--ink)}
+  body.touch #hullBox{padding:2px}
+  body.touch .cap,body.touch .lbl{font-size:8px;text-shadow:1px 1px 0 var(--ink)}
+  body.touch .meter{gap:2px}
+  body.touch .bar{height:10px;border-width:2px;box-shadow:2px 2px 0 var(--ink)}
+  body.touch .lives{gap:3px}
+  body.touch .hrt{width:15px;height:15px}
+  body.touch .hud-r{gap:3px}
+  body.touch #score{font-size:17px}
+  body.touch #waveLbl{font-size:9px}
+  body.touch #mm{width:78px;height:78px;border-width:2px;box-shadow:inset 0 0 0 1px #8fb8ff,2px 2px 0 var(--ink)}
+  body.touch #wsec{font-size:11px}
+  body.touch #banner{top:16%;font-size:15px}
+  body.touch #banner small{font-size:11px;margin-top:4px}
+  body.touch .ov{padding:8px max(10px,env(safe-area-inset-right,0px)) 8px max(10px,env(safe-area-inset-left,0px))}
+  body.touch .card{padding:12px 16px;gap:8px;box-shadow:inset 3px 3px 0 #fff,inset -3px -3px 0 #b9c8ff,5px 5px 0 var(--ink)}
+  body.touch h1{font-size:20px}
+  body.touch h1 br{display:none}
+  body.touch h1 span{margin-left:.45em}
+  body.touch h2{font-size:14px}
+  body.touch .eyebrow{font-size:8px}
+  body.touch .tag{font-size:13px}
+  body.touch .btn{padding:9px 12px;font-size:10px;border-width:2px;box-shadow:inset -3px -3px 0 #a9c8ff,3px 3px 0 var(--ink)}
+  body.touch .card.menu{width:min(640px,100%);gap:8px}
+  body.touch .card.menu .eyebrow{display:none}
+  body.touch .menu-btns{grid-template-columns:repeat(3,1fr);gap:8px}
+  body.touch .menu-btn{padding:8px 10px}
+  body.touch .menu-btn .b-t{font-size:11px}
+  body.touch .menu-btn .b-s{display:none}
+  body.touch .menu-btn.big{grid-column:1/-1;padding:10px}
+  body.touch .menu-btn.big .b-t{font-size:14px}
+  body.touch .vol{gap:8px}
+  body.touch .vol .vl{font-size:8px}
+  body.touch .vol .vb{padding:5px 7px}
+  body.touch .pilot{gap:3px}
+  body.touch .pilot .p-t{font-size:8px}
+  body.touch .pilot small{display:none}
+  body.touch .hi{font-size:11px}
+  body.touch #pause .card{width:min(560px,100%);grid-template-columns:1fr 1fr}
+  body.touch #pause .card>h2,body.touch #pause .card>p,body.touch #pause .card>.vol{grid-column:1/-1}
+  body.touch .card.over{width:min(640px,100%)}
+  body.touch .stat{padding:6px}
+  body.touch .stat b,body.touch .pts b{font-size:12px}
+  body.touch .rank li{padding:3px 8px;font-size:13px;grid-template-columns:34px 1fr auto 48px}
+  body.touch #rankOver li:nth-child(n+4){display:none}
+  body.touch .lvl-grid{grid-template-columns:repeat(8,1fr);gap:6px}
+  body.touch .lvl{font-size:6px;gap:3px}
+  body.touch .lvl .circ{font-size:0}
+  body.touch .shop-grid{grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px}
+  body.touch .tile{padding:8px 4px 6px}
+  body.touch .tile .ico{width:30px;height:30px}
+  body.touch .tile.skin canvas{width:44px;height:44px}
+  body.touch #skinPrev{max-height:100px;width:auto;margin:0 auto}
 }
+
+/* ===== Controles de toque personalizaveis ===== */
+#tbtns{display:contents}
+.tb{position:absolute;pointer-events:auto;box-sizing:border-box;padding:0 4px;white-space:nowrap;display:grid;place-items:center;transform:none}
+#stickBase{box-sizing:border-box;width:var(--sb,120px);height:var(--sb,120px);left:calc(26px + env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+#stickKnob{box-sizing:border-box;width:calc(var(--sb,120px) * .42);height:calc(var(--sb,120px) * .42);left:calc(var(--sb,120px) * .29);top:calc(var(--sb,120px) * .29)}
+#touch.lefty #stickZone{left:auto;right:0}
+#touch.lefty #stickBase{left:auto;right:calc(26px + env(safe-area-inset-right,0px))}
+#touch.editing #stickZone{pointer-events:none}
+#touch.editing .tb{outline:2px dashed #ffe27a;outline-offset:2px;cursor:move}
+.tb.drag{opacity:.75}
+#tedit{position:fixed;left:50%;top:8px;transform:translateX(-50%);z-index:30;width:min(520px,94vw);box-sizing:border-box;padding:8px 12px 10px;display:grid;gap:6px;
+  background:#eef1ff;border:3px solid var(--ink);box-shadow:inset 3px 3px 0 #fff,inset -3px -3px 0 #b9c8ff,5px 5px 0 var(--ink);
+  --text:#1b2070;--muted:#4a55b5;--line:#10144a;color:#1b2070;font-size:13px}
+#tedit .te-h{font-family:var(--f-display);font-size:9px;letter-spacing:.05em;cursor:move;touch-action:none;padding:2px 0 3px;color:#2f5cff;user-select:none}
+#tedit .vol{gap:8px}
+#tedit .vol .vl{min-width:64px;text-align:left}
+#tedit .vol .vp{min-width:44px}
+#tedit .te-b{display:flex;gap:6px;flex-wrap:wrap}
+#tedit .te-b .btn{padding:7px 8px;font-size:8px;flex:1 1 auto;min-width:0;white-space:nowrap}
+#tedit .te-b .btn.on{background:#ffe27a}
 </style>
 
 <canvas id="cv" aria-label="Área de jogo do Galaxy Divers"></canvas>
@@ -402,6 +418,19 @@ html,body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webk
   </div>
 </div>
 
+<div id="tedit" hidden role="dialog" aria-label="Personalizar controles do celular">
+  <div class="te-h" id="teHandle">PERSONALIZAR · arraste botões e painel</div>
+  <div class="vol"><span class="vl">BOTÕES</span><input type="range" id="teK" min="50" max="180" step="5" aria-label="Tamanho dos botões"><span class="vp" id="teKv">100%</span></div>
+  <div class="vol"><span class="vl">JOYSTICK</span><input type="range" id="teJs" min="60" max="160" step="5" aria-label="Tamanho do joystick"><span class="vp" id="teJsv">100%</span></div>
+  <div class="vol"><span class="vl">GIRO</span><input type="range" id="teS" min="60" max="400" step="10" aria-label="Sensibilidade do giro"><span class="vp" id="teSv">1,8x</span></div>
+  <div class="te-b">
+    <button type="button" class="btn ghost" id="teAssist">Auto-mira: SIM</button>
+    <button type="button" class="btn ghost" id="teLefty">Canhoto: NÃO</button>
+    <button type="button" class="btn ghost" id="teReset">Restaurar</button>
+    <button type="button" class="btn" id="teDone">Concluir</button>
+  </div>
+</div>
+
 <section id="menu" class="ov">
   <div class="card menu">
     <p class="eyebrow">Combate espacial livre em 360°</p>
@@ -448,6 +477,7 @@ html,body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webk
       <dt><kbd>P</kbd><kbd>M</kbd></dt><dd>Pausar · Som</dd>
     </dl>
     <p class="tag touch-only">Joystick à esquerda para pilotar. À direita: FOGO, BOOST, as manobras laterais, ESPECIAL e TROCAR. O botão II, no topo, pausa o jogo.</p>
+    <button class="btn touch-only" id="ctrlEdit">Personalizar controles do celular</button>
     <p class="tip">Você tem <b>3 vidas</b>. Ao perder o casco, a nave renasce com o casco cheio e fica protegida por alguns segundos. Sem vidas, a partida acaba.</p>
     <p class="tip">Cada partida rende <b>XP de piloto</b> igual aos seus pontos. Subir de nível libera novas pinturas no Hangar.</p>
     <p class="tip">Durante a manobra lateral a nave fica <b>invulnerável</b> por um instante. Passar raspando de um tiro inimigo vale <b>+50</b>.</p>
@@ -487,6 +517,7 @@ html,body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webk
     <button class="btn" id="resumeBtn">Continuar</button>
     <button class="btn ghost" id="pauseRestart">Reiniciar partida</button>
     <button class="btn ghost" id="pauseCtrl">Controles</button>
+    <button class="btn ghost touch-only" id="pauseEdit">Editar controles</button>
     <button class="btn ghost" id="pauseMenuBtn">Menu principal</button>
   </div>
 </section>
@@ -538,7 +569,9 @@ const angDiff = (a, b) => { let d = (a - b) % TAU; if (d > Math.PI) d -= TAU; if
 const turnTo = (cur, target, step) => cur + clamp(angDiff(target, cur), -step, step);
 const $ = id => document.getElementById(id);
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const isTouch = matchMedia('(pointer: coarse)').matches;
+const MODE = new URLSearchParams(location.search).get('modo');
+const isTouch = MODE === 'celular' ? true : MODE === 'pc' ? false : matchMedia('(pointer: coarse)').matches;
+document.body.classList.toggle('touch', isTouch);
 
 const COL = { ship: '#5aa9ff', boost: '#ff9d3c', thrust: '#7fe8ff', hull: '#7cff9b', energy: '#6ea8ff', bg: '#0d0b2b', white: '#ffffff' };
 const WORLD = 4000;
@@ -636,13 +669,15 @@ function bounceOffRocks(o, rad) {
 
 const cv = $('cv'), ctx = cv.getContext('2d');
 const mm = $('mm'), mctx = mm.getContext('2d');
-let W = 0, H = 0, DPR = 1, Z = 1;
+if (isTouch) { mm.width = 120; mm.height = 120; }
+let W = 0, H = 0, DPR = 1, Z = 1, DPRMAX = isTouch ? 1.5 : 2, PCAP = isTouch ? 500 : 1200, layoutHook = null;
 function resize() {
-  DPR = Math.min(2, window.devicePixelRatio || 1);
+  DPR = Math.min(DPRMAX, window.devicePixelRatio || 1);
   W = window.innerWidth; H = window.innerHeight;
   Z = isTouch ? clamp(H / 560, .55, 1) : 1;
   cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
   cv.style.width = W + 'px'; cv.style.height = H + 'px';
+  if (layoutHook) layoutHook();
 }
 addEventListener('resize', resize); resize();
 
@@ -656,6 +691,19 @@ const NEB2 = [
   { x: WORLD / 2 + 1100, y: WORLD / 2 - 200, r: 900, c: '#2f4ccf', a: .024 },
   { x: WORLD / 2 - 1200, y: WORLD / 2 - 500, r: 700, c: '#c0529e', a: .016 },
 ];
+let nebCv = null;
+function getNeb() {
+  if (nebCv) return nebCv;
+  const sc = .2, span = 2500;
+  nebCv = document.createElement('canvas'); nebCv.width = nebCv.height = Math.round(span * sc);
+  const c = nebCv.getContext('2d'); c.scale(sc, sc);
+  for (const n of NEB2) {
+    const x = span / 2 + (n.x - WORLD / 2) * .12, y = span / 2 + (n.y - WORLD / 2) * .12;
+    c.fillStyle = n.c;
+    for (let i = 0; i < 6; i++) { c.globalAlpha = n.a; c.beginPath(); c.arc(x, y, n.r * (1 - i / 6), 0, TAU); c.fill(); }
+  }
+  return nebCv;
+}
 const SPK = ['#ffffff', '#ffb3e6', '#ffd08a', '#9dffd6'];
 const NEB = [
   { x: WORLD / 2 - 900, y: WORLD / 2 - 500, r: 700, c: 'rgba(96,64,190,.20)' },
@@ -863,6 +911,7 @@ addEventListener('keydown', e => {
     if (e.code === 'Digit2') selectWeapon('laser');
     if (e.code === 'Digit3') selectWeapon('triple');
   }
+  if (editing) { if (e.code === 'Escape') exitEdit(); return; }
   if (ctrlFrom === 'pause' && !$('ctrlScr').hidden) { if (e.code === 'Escape') closeCtrlFromPause(); }
   else if (e.code === 'KeyP' || e.code === 'Escape') togglePause();
   if (e.code === 'KeyM') setMuted(!muted);
@@ -894,11 +943,11 @@ cv.addEventListener('wheel', e => {
 const touch = { sx: 0, sy: 0, m: 0, ox: 0, oy: 0, active: false, id: null, fire: false, boost: false };
 const zone = $('stickZone'), base = $('stickBase'), knob = $('stickKnob');
 zone.addEventListener('pointerdown', e => {
-  touch.id = e.pointerId; touch.active = true; zone.setPointerCapture(e.pointerId);
+  touch.id = e.pointerId; touch.active = true; try { zone.setPointerCapture(e.pointerId); } catch (e2) {}
   // a base aparece sob o dedo, e o movimento é medido a partir do ponto em que o dedo tocou
   const zr = zone.getBoundingClientRect(), hb = base.offsetWidth / 2;
   touch.ox = e.clientX; touch.oy = e.clientY;
-  base.style.left = (e.clientX - zr.left - hb) + 'px'; base.style.top = (e.clientY - zr.top - hb) + 'px'; base.style.bottom = 'auto';
+  base.style.left = (e.clientX - zr.left - hb) + 'px'; base.style.top = (e.clientY - zr.top - hb) + 'px'; base.style.bottom = 'auto'; base.style.right = 'auto';
   moveStick(e);
 });
 zone.addEventListener('pointermove', e => { if (e.pointerId === touch.id) moveStick(e); });
@@ -913,15 +962,127 @@ function moveStick(e) {
 }
 function holdBtn(id, prop) {
   const b = $(id);
-  b.addEventListener('pointerdown', e => { e.preventDefault(); touch[prop] = true; b.classList.add('on'); });
+  b.addEventListener('pointerdown', e => { if (editing) return; e.preventDefault(); touch[prop] = true; b.classList.add('on'); });
   const up = () => { touch[prop] = false; b.classList.remove('on'); };
   b.addEventListener('pointerup', up); b.addEventListener('pointercancel', up); b.addEventListener('pointerleave', up);
 }
 holdBtn('tFire', 'fire'); holdBtn('tBoost', 'boost'); holdBtn('tOrb', 'charge');
-$('tSwap').addEventListener('pointerdown', e => { e.preventDefault(); if (state === 'play') cycleWeapon(1); });
-$('tPause').addEventListener('pointerdown', e => { e.preventDefault(); if (state === 'play' || state === 'pause') togglePause(); });
-$('tDashL').addEventListener('pointerdown', e => { e.preventDefault(); tryDash(-1); });
-$('tDashR').addEventListener('pointerdown', e => { e.preventDefault(); tryDash(1); });
+$('tSwap').addEventListener('pointerdown', e => { if (editing) return; e.preventDefault(); if (state === 'play') cycleWeapon(1); });
+$('tPause').addEventListener('pointerdown', e => { if (editing) return; e.preventDefault(); if (state === 'play' || state === 'pause') togglePause(); });
+$('tDashL').addEventListener('pointerdown', e => { if (editing) return; e.preventDefault(); tryDash(-1); });
+$('tDashR').addEventListener('pointerdown', e => { if (editing) return; e.preventDefault(); tryDash(1); });
+
+/* ---------- Controles de toque: tamanho, posicao, sensibilidade ---------- */
+const TOUCH_KEY = 'galaxyDiversTouch';
+const TB_IDS = ['tDashL', 'tDashR', 'tSwap', 'tBoost', 'tOrb', 'tFire', 'tPause'];
+const TCFG_DEF = () => ({ k: 1, js: 1, sens: 1.8, lefty: false, assist: true, pos: {} });
+let tcfg = TCFG_DEF(), editing = false, editFrom = null;
+try {
+  const sv = JSON.parse(localStorage.getItem(TOUCH_KEY) || 'null');
+  if (sv && typeof sv === 'object') {
+    tcfg.k = clamp(+sv.k || 1, .5, 1.8); tcfg.js = clamp(+sv.js || 1, .6, 1.6); tcfg.sens = clamp(+sv.sens || 1.8, .6, 4);
+    tcfg.lefty = !!sv.lefty; tcfg.assist = sv.assist !== false;
+    if (sv.pos && typeof sv.pos === 'object') for (const id of TB_IDS) { const p = sv.pos[id]; if (p && isFinite(p.x) && isFinite(p.y)) tcfg.pos[id] = { x: clamp(+p.x, 0, 1), y: clamp(+p.y, 0, 1) }; }
+  }
+} catch (e) {}
+function saveTouch() { try { localStorage.setItem(TOUCH_KEY, JSON.stringify(tcfg)); } catch (e) {} }
+const TB_BASE = id => id === 'tPause' ? (H <= 520 ? [46, 34] : [56, 40]) : (H <= 520 ? [62, 44] : [76, 56]);
+function sizeOf(id) { const b = TB_BASE(id), f = id === 'tFire' ? 1.3 : 1; return { w: b[0] * tcfg.k * f, h: b[1] * tcfg.k * f }; }
+function defaultLayout() {
+  const b = TB_BASE('tBoost'), g = 6, m = 10, sw = b[0] * tcfg.k * 1.3, sh = b[1] * tcfg.k * 1.3, res = {};
+  const slots = [['tDashL', 0, 0], ['tDashR', 1, 0], ['tSwap', 2, 0], ['tBoost', 0, 1], ['tOrb', 1, 1], ['tFire', 2, 1]];
+  for (const [id, c, r] of slots) {
+    const z = sizeOf(id);
+    const sx = tcfg.lefty ? m + c * (sw + g) : W - m - (3 - c) * (sw + g) + g;
+    const sy = H - m - (2 - r) * (sh + g) + g;
+    res[id] = { x: sx + (sw - z.w) / 2, y: sy + (sh - z.h) / 2 };
+  }
+  res.tPause = { x: W / 2 - sizeOf('tPause').w / 2, y: 6 };
+  return res;
+}
+function resetBase() { base.style.left = ''; base.style.top = ''; base.style.bottom = ''; base.style.right = ''; knob.style.transform = ''; }
+function layoutTouch() {
+  const def = defaultLayout(), fs0 = H <= 520 ? 10 : 12;
+  for (const id of TB_IDS) {
+    const el = $(id), z = sizeOf(id), p = tcfg.pos[id];
+    let x = p ? p.x * W : def[id].x, y = p ? p.y * H : def[id].y;
+    x = clamp(x, 0, Math.max(0, W - z.w)); y = clamp(y, 0, Math.max(0, H - z.h));
+    el.style.left = x + 'px'; el.style.top = y + 'px'; el.style.width = z.w + 'px'; el.style.height = z.h + 'px';
+    el.style.transform = 'none'; el.style.fontSize = Math.max(8, Math.round(fs0 * tcfg.k)) + 'px';
+  }
+  $('touch').style.setProperty('--sb', (H <= 520 ? 100 : 120) * tcfg.js + 'px');
+  $('touch').classList.toggle('lefty', tcfg.lefty);
+  if (!touch.active) resetBase();
+}
+layoutHook = layoutTouch;
+
+// arrastar os botoes no modo de edicao
+TB_IDS.forEach(id => {
+  const el = $(id); let drag = null;
+  el.addEventListener('pointerdown', e => {
+    if (!editing) return;
+    e.preventDefault();
+    const r = el.getBoundingClientRect(); drag = { id: e.pointerId, dx: e.clientX - r.left, dy: e.clientY - r.top };
+    try { el.setPointerCapture(e.pointerId); } catch (e2) {}
+    el.classList.add('drag');
+  });
+  el.addEventListener('pointermove', e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const z = sizeOf(id);
+    const x = clamp(e.clientX - drag.dx, 0, Math.max(0, W - z.w)), y = clamp(e.clientY - drag.dy, 0, Math.max(0, H - z.h));
+    el.style.left = x + 'px'; el.style.top = y + 'px';
+    tcfg.pos[id] = { x: x / W, y: y / H };
+  });
+  const end = e => { if (drag && e.pointerId === drag.id) { drag = null; el.classList.remove('drag'); saveTouch(); } };
+  el.addEventListener('pointerup', end); el.addEventListener('pointercancel', end);
+});
+// arrastar o painel de edicao
+(function () {
+  const p = $('tedit'), h = $('teHandle'); let d = null;
+  h.addEventListener('pointerdown', e => {
+    const r = p.getBoundingClientRect(); d = { id: e.pointerId, dx: e.clientX - r.left, dy: e.clientY - r.top };
+    p.style.transform = 'none'; p.style.left = r.left + 'px'; p.style.top = r.top + 'px';
+    try { h.setPointerCapture(e.pointerId); } catch (e2) {}
+  });
+  h.addEventListener('pointermove', e => {
+    if (!d || e.pointerId !== d.id) return;
+    p.style.left = clamp(e.clientX - d.dx, 0, Math.max(0, W - p.offsetWidth)) + 'px';
+    p.style.top = clamp(e.clientY - d.dy, 0, Math.max(0, H - p.offsetHeight)) + 'px';
+  });
+  const end = () => { d = null; };
+  h.addEventListener('pointerup', end); h.addEventListener('pointercancel', end);
+})();
+const fillRange = i => i.style.setProperty('--p', ((i.value - i.min) / (i.max - i.min) * 100) + '%');
+const fmtX = v => v.toFixed(1).replace('.', ',') + 'x';
+function syncEditUI() {
+  $('teK').value = Math.round(tcfg.k * 100); $('teKv').textContent = Math.round(tcfg.k * 100) + '%'; fillRange($('teK'));
+  $('teJs').value = Math.round(tcfg.js * 100); $('teJsv').textContent = Math.round(tcfg.js * 100) + '%'; fillRange($('teJs'));
+  $('teS').value = Math.round(tcfg.sens * 100); $('teSv').textContent = fmtX(tcfg.sens); fillRange($('teS'));
+  $('teLefty').textContent = 'Canhoto: ' + (tcfg.lefty ? 'SIM' : 'NÃO'); $('teLefty').classList.toggle('on', tcfg.lefty);
+  $('teAssist').textContent = 'Auto-mira: ' + (tcfg.assist ? 'SIM' : 'NÃO'); $('teAssist').classList.toggle('on', tcfg.assist);
+}
+$('teK').addEventListener('input', e => { tcfg.k = e.target.value / 100; syncEditUI(); layoutTouch(); saveTouch(); });
+$('teJs').addEventListener('input', e => { tcfg.js = e.target.value / 100; syncEditUI(); layoutTouch(); saveTouch(); });
+$('teS').addEventListener('input', e => { tcfg.sens = e.target.value / 100; syncEditUI(); saveTouch(); });
+$('teLefty').addEventListener('click', () => { tcfg.lefty = !tcfg.lefty; tcfg.pos = {}; syncEditUI(); layoutTouch(); saveTouch(); });
+$('teAssist').addEventListener('click', () => { tcfg.assist = !tcfg.assist; syncEditUI(); saveTouch(); });
+$('teReset').addEventListener('click', () => { tcfg = TCFG_DEF(); syncEditUI(); layoutTouch(); saveTouch(); });
+function enterEdit(from) {
+  editing = true; editFrom = from;
+  ui.pause.hidden = true; $('ctrlScr').hidden = true;
+  ui.touch.hidden = false; ui.touch.classList.add('editing'); $('tedit').hidden = false;
+  syncEditUI(); layoutTouch();
+}
+function exitEdit() {
+  editing = false; ui.touch.classList.remove('editing'); $('tedit').hidden = true; saveTouch();
+  if (editFrom === 'pause') ui.pause.hidden = false;
+  else { $('ctrlScr').hidden = false; if (state === 'menu') ui.touch.hidden = true; }
+  editFrom = null;
+}
+$('teDone').addEventListener('click', exitEdit);
+$('pauseEdit').addEventListener('click', () => { if (state === 'pause') enterEdit('pause'); });
+$('ctrlEdit').addEventListener('click', () => enterEdit('ctrl'));
+layoutTouch();
 
 /* ---------- UI ---------- */
 const ui = { menu: $('menu'), pause: $('pause'), over: $('over'), shop: $('shop'), hud: $('hud'), touch: $('touch'), banner: $('banner') };
@@ -1355,6 +1516,15 @@ function explodeOrb(x, y) {
 }
 
 /* ---------- Atualização ---------- */
+function nearestFoe() {
+  let best = null, bd = 1100 * 1100;
+  for (const e of enemies) {
+    if (e.dead) continue;
+    const d = (e.x - P.x) ** 2 + (e.y - P.y) ** 2;
+    if (d < bd) { bd = d; best = e; }
+  }
+  return best ? Math.atan2(best.y - P.y, best.x - P.x) : null;
+}
 function update(dt) {
   const alive = P.alive && state === 'play';
   // Jogador
@@ -1367,10 +1537,13 @@ function update(dt) {
     if (bdx('right', 'ArrowRight')) ix += 1;
     let th = Math.hypot(ix, iy);
     if (th > 0) { ix /= th; iy /= th; th = 1; }
+    const tgt = (isTouch && tcfg.assist && (touch.fire || touch.charge)) ? nearestFoe() : null;
     if (touch.active && touch.m > .15) {
       const ta = Math.atan2(touch.sy, touch.sx);
       ix = Math.cos(ta); iy = Math.sin(ta); th = touch.m > .3 ? touch.m : 0;
-      P.a = turnTo(P.a, ta, 7 * dt);
+      P.a = turnTo(P.a, tgt !== null ? tgt : ta, 7 * tcfg.sens * dt);
+    } else if (tgt !== null) {
+      P.a = turnTo(P.a, tgt, 7 * tcfg.sens * dt);
     } else if (mouse.seen && !isTouch) {
       const ta = Math.atan2(mouse.y - (H / 2 + P.y - cam.y), mouse.x - (W / 2 + P.x - cam.x));
       P.a = turnTo(P.a, ta, (P.laserT > 0 ? 4.5 : 16) * dt);
@@ -1639,7 +1812,7 @@ function update(dt) {
     if (p.life <= 0) { parts.splice(i, 1); continue; }
     p.x += p.vx * dt; p.y += p.vy * dt; const f = Math.pow(.2, dt); p.vx *= f; p.vy *= f;
   }
-  if (parts.length > 1200) parts.splice(0, parts.length - 1200);
+  if (parts.length > PCAP) parts.splice(0, parts.length - PCAP);
   for (let i = floats.length - 1; i >= 0; i--) { const f = floats[i]; f.life -= dt; f.y -= 40 * dt; if (f.life <= 0) floats.splice(i, 1); }
 
   // Câmera
@@ -1790,7 +1963,7 @@ function drawPlayer() {
   ctx.restore();
 }
 function stunArcs(r) {
-  ctx.strokeStyle = '#ffe14b'; ctx.lineWidth = 1.8; ctx.shadowColor = '#ffe14b'; ctx.shadowBlur = 8;
+  ctx.strokeStyle = '#ffe14b'; ctx.lineWidth = 1.8; ctx.shadowColor = '#ffe14b'; ctx.shadowBlur = isTouch ? 0 : 8;
   for (let i = 0; i < 3; i++) {
     const a = Math.random() * TAU, a2 = a + rand(.4, .9), m = (a + a2) / 2;
     ctx.beginPath(); ctx.moveTo(Math.cos(a) * r * .6, Math.sin(a) * r * .6);
@@ -1842,10 +2015,11 @@ function render() {
   ctx.fillStyle = COL.bg; ctx.fillRect(0, 0, W, H);
 
     // brilho de nebulosa em faixas (aspecto pixel) e órbitas discretas
-  for (const n of NEB2) {
-    const x = (n.x - cam.x) * .12 + W / 2, y = (n.y - cam.y) * .12 + H / 2;
-    ctx.fillStyle = n.c;
-    for (let i = 0; i < 6; i++) { ctx.globalAlpha = n.a; ctx.beginPath(); ctx.arc(Math.round(x), Math.round(y), n.r * (1 - i / 6), 0, TAU); ctx.fill(); }
+  {
+    const nb = getNeb(), nx = Math.round((WORLD / 2 - cam.x) * .12 + W / 2), ny = Math.round((WORLD / 2 - cam.y) * .12 + H / 2);
+    const dx = nx - 1250, dy = ny - 1250, x0 = Math.max(0, dx), y0 = Math.max(0, dy), x1 = Math.min(W, dx + 2500), y1 = Math.min(H, dy + 2500);
+    ctx.imageSmoothingEnabled = true;
+    if (x1 > x0 && y1 > y0) ctx.drawImage(nb, (x0 - dx) * .2, (y0 - dy) * .2, (x1 - x0) * .2, (y1 - y0) * .2, x0, y0, x1 - x0, y1 - y0);
   }
   ctx.globalAlpha = 1; ctx.strokeStyle = 'rgba(190,200,255,.11)'; ctx.lineWidth = 2;
   {
@@ -1909,7 +2083,7 @@ function render() {
     const col = k.kind === 'hull' ? COL.hull : COL.energy;
     if (k.life < 3 && Math.floor(k.life * 8) % 2 === 0) continue;
     ctx.save(); ctx.translate(k.x, k.y); ctx.rotate(k.t * 1.8);
-    ctx.shadowColor = col; ctx.shadowBlur = 14; ctx.strokeStyle = col; ctx.lineWidth = 2;
+    ctx.shadowColor = col; ctx.shadowBlur = isTouch ? 0 : 14; ctx.strokeStyle = col; ctx.lineWidth = 2;
     ctx.strokeRect(-9, -9, 18, 18); ctx.rotate(-k.t * 1.8); ctx.shadowBlur = 0;
     ctx.fillStyle = col; ctx.font = '700 14px "Pixelify Sans", monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText(k.kind === 'hull' ? '+' : 'E', 0, 1); ctx.restore();
@@ -2066,16 +2240,20 @@ let lastHud = '';
   }
   g.setAttribute('stroke', 'none'); g.setAttribute('shape-rendering', 'crispEdges'); g.innerHTML = out;
 })();
+const hc = {}, chg = (k, v) => (hc[k] === v ? false : (hc[k] = v, true));
 let lastLives = -1;
 hud.hearts = [...document.querySelectorAll('#lives .hrt')];
 function updateHud() {
   if (P.lives !== lastLives) { lastLives = P.lives; hud.hearts.forEach((h, i) => h.classList.toggle('off', i >= P.lives)); }
   const hf = clamp(P.hp / P.maxHp, 0, 1);
-  hud.hullLevel.setAttribute('y', 58 - hf * 51);
-  hud.hullUse.style.color = hullColor(hf);
-  hud.hullBox.classList.toggle('crit', hf < .25 && P.alive);
-  hud.en.style.width = P.en + '%';
-  hud.en.parentElement.style.setProperty('--dc', (DASH_COST * effMul()) + '%');
+  const yv = (58 - hf * 51).toFixed(1);
+  if (chg('hl', yv)) { hud.hullLevel.setAttribute('y', yv); hud.hullUse.style.color = hullColor(hf); }
+  const crit = hf < .25 && P.alive;
+  if (chg('crit', crit)) hud.hullBox.classList.toggle('crit', crit);
+  const enw = Math.round(P.en * 2) / 2;
+  if (chg('en', enw)) hud.en.style.width = enw + '%';
+  const dc = Math.round(DASH_COST * effMul() * 10) / 10;
+  if (chg('dc', dc)) hud.en.parentElement.style.setProperty('--dc', dc + '%');
   const w = P.sel, hasW = !!w && P.has[w];
   hud.wcell.hidden = !hasW;
   if (hasW) {
@@ -2084,10 +2262,14 @@ function updateHud() {
       hud.wbox.classList.remove('pop'); void hud.wbox.offsetWidth; hud.wbox.classList.add('pop');
     }
     const active = w === 'laser' && P.laserT > 0;
-    hud.wcd.style.setProperty('--p', active ? 0 : clamp(P.cd[w] / (P.cdMax[w] || 1), 0, 1));
-    hud.wact.style.setProperty('--p', active ? P.laserT / LASER_TIME : 0);
-    hud.wsec.textContent = !active && P.cd[w] > 0 ? Math.ceil(P.cd[w]) : '';
-    hud.wbox.classList.toggle('rdy', P.cd[w] <= 0 && !active);
+    const pcd = (active ? 0 : clamp(P.cd[w] / (P.cdMax[w] || 1), 0, 1)).toFixed(2);
+    if (chg('wcd', pcd)) hud.wcd.style.setProperty('--p', pcd);
+    const pac = (active ? P.laserT / LASER_TIME : 0).toFixed(2);
+    if (chg('wact', pac)) hud.wact.style.setProperty('--p', pac);
+    const wsc = !active && P.cd[w] > 0 ? String(Math.ceil(P.cd[w])) : '';
+    if (chg('wsec', wsc)) hud.wsec.textContent = wsc;
+    const rdy = P.cd[w] <= 0 && !active;
+    if (chg('rdy', rdy)) hud.wbox.classList.toggle('rdy', rdy);
   }
   const mult = Math.min(5, 1 + Math.floor(combo / 4));
   const key = score + '|' + wave + '|' + mult;
@@ -2100,12 +2282,23 @@ function updateHud() {
 
 /* ---------- Loop ---------- */
 let last = performance.now();
+let qLevel = 0, qAcc = 0, qN = 0, mmTick = 0;
+function degrade() {
+  if (qLevel >= 2) return;
+  qLevel++;
+  DPRMAX = [isTouch ? 1.5 : 2, 1.25, 1][qLevel]; PCAP = [isTouch ? 500 : 1200, 300, 160][qLevel];
+  resize();
+}
 function frame(now) {
-  const dt = Math.min(.033, (now - last) / 1000); last = now;
-  if (state === 'play' || state === 'dying') update(dt);
+  const raw = now - last, dt = Math.min(.033, raw / 1000); last = now;
+  if (state === 'play' || state === 'dying') {
+    let t = Math.min(.066, raw / 1000);
+    while (t > 1e-4) { const d = Math.min(t, 1 / 30); update(d); t -= d; }
+    if (state === 'play') { qAcc += Math.min(raw, 100); if (++qN >= 150) { if (qAcc / qN > 27) degrade(); qAcc = 0; qN = 0; } }
+  }
   else if (state === 'menu') { cam.x += 22 * dt; cam.y -= 9 * dt; if (curScr === 'skins') drawSkinPreview(now); }
   render();
-  if (state !== 'menu') { renderMinimap(); updateHud(); }
+  if (state !== 'menu') { if ((mmTick++ & 1) === 0) renderMinimap(); updateHud(); }
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);

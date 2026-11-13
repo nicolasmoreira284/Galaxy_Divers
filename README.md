@@ -10,7 +10,7 @@
 ![Sem dependências](https://img.shields.io/badge/depend%C3%AAncias-zero-5aa9ff?style=for-the-badge)
 ![Arquivo único](https://img.shields.io/badge/arquivo-%C3%BAnico-7cff9b?style=for-the-badge)
 
-<a href="https://galaxy-divers.web.app/jogo/"><b>▶ JOGAR NO NAVEGADOR</b></a> &nbsp;·&nbsp; <a href="https://galaxy-divers.web.app"><b>🌐 LANDING PAGE</b></a>
+<a href="https://galaxy-divers.web.app/jogo/?modo=pc"><b>▶ JOGAR NO PC</b></a> &nbsp;·&nbsp; <a href="https://galaxy-divers.web.app/jogo/?modo=celular"><b>📱 JOGAR NO CELULAR</b></a> &nbsp;·&nbsp; <a href="https://galaxy-divers.web.app"><b>🌐 LANDING PAGE</b></a>
 
 **[▶ Como jogar](#-como-jogar)** · **[🏠 Menu](#-menu-principal)** · **[🎮 Controles](#-controles)** · **[🏅 Vidas e progresso](#-vidas-recordes-e-nível-de-piloto)** · **[🛠 Oficina](#-oficina-de-melhorias)** · **[👾 Inimigos](#-inimigos)** · **[👑 Chefe](#-chefe-o-devorador)**
 
@@ -67,14 +67,15 @@ O menu também tem o seu **nível de piloto** (com a barra de XP) e o controle d
 - 🎨 **Hangar de naves** com cinco pinturas e prévia animada.
 - ⌨️ **Teclas personalizáveis**, também dentro do jogo, pelo menu de pausa.
 - 🔊 **Volume ajustável** e botão de mudo, no menu e na pausa.
-- 📱 **Controles de toque** para celular, com joystick, botões e pausa.
+- 📱 **Modo celular** com controles de toque **personalizáveis**: mova cada botão, mude o tamanho, a sensibilidade do giro e use auto-mira ou o modo canhoto.
 - 🔊 **Efeitos sonoros sintetizados** em tempo real (sem arquivos de áudio).
 
 ## ▶ Como jogar
 
 **Opção 0: jogar online, sem baixar nada**
 
-- ▶ [Jogar no navegador](https://galaxy-divers.web.app/jogo/), no computador ou no celular.
+- ▶ [Jogar no PC](https://galaxy-divers.web.app/jogo/?modo=pc): teclado e mouse.
+- 📱 [Jogar no celular](https://galaxy-divers.web.app/jogo/?modo=celular): controles na tela, que você personaliza. Use o celular na horizontal.
 - 🌐 [Landing page do jogo](https://galaxy-divers.web.app), com as telas, as regras e os controles.
 
 **Opção 1: baixar e abrir**
@@ -112,7 +113,29 @@ As teclas abaixo são as **padrão**. Em **Controles**, no menu principal ou na 
 
 `P`, `M`, `Esc` e `1` `2` `3` são reservadas e não podem ser atribuídas a outras ações.
 
-**No celular**, os controles aparecem na tela: joystick à esquerda para pilotar e, à direita, os botões FOGO, BOOST, as manobras laterais (ESQ e DIR), ESPECIAL e TROCAR. O botão **II**, no topo, pausa o jogo, e o aparelho vibra quando você leva dano. Jogue com o celular **na horizontal**: ao iniciar a partida o jogo entra em tela cheia (quando o navegador permite), a visão se afasta para mostrar mais do mapa e o HUD e os menus ficam compactos.
+**No celular** (use o link "Jogar no celular" ou abra o jogo pelo aparelho), os controles aparecem na tela: joystick à esquerda para pilotar e, à direita, os botões FOGO, BOOST, as manobras laterais (ESQ e DIR), ESPECIAL e TROCAR. O botão **II**, no topo, pausa o jogo, e o aparelho vibra quando você leva dano. Jogue com o celular **na horizontal**: ao iniciar a partida o jogo entra em tela cheia (quando o navegador permite), a visão se afasta para mostrar mais do mapa e o HUD e os menus ficam compactos.
+
+### Personalizar os controles do celular
+
+No modo celular, abra a **pausa** (botão **II**) e toque em **Editar controles** (ou use **Controles > Personalizar controles do celular**). Aí você pode:
+
+| Ajuste | O que faz |
+|---|---|
+| **Arrastar os botões** | Cada botão (ESQ, DIR, TROCAR, BOOST, ESPECIAL, FOGO e o de pausa) vai para onde ficar mais confortável |
+| **Botões** (50% a 180%) | Aumenta ou diminui o tamanho de todos os botões |
+| **Joystick** (60% a 160%) | Muda o tamanho do joystick |
+| **Giro** (0,6x a 4x) | Sensibilidade do joystick: o quão rápido a nave vira. O padrão é 1,8x |
+| **Auto-mira** | Ao segurar FOGO, a nave mira sozinha no inimigo mais próximo, mesmo enquanto você se move para outro lado |
+| **Canhoto** | Troca o lado do joystick e do grupo de botões |
+| **Restaurar** | Volta tudo ao padrão |
+
+O painel também pode ser arrastado, e tudo fica salvo no aparelho.
+
+<div align="center">
+
+<img src="assets/editar.png" alt="Tela de personalização dos controles do celular" width="60%">
+
+</div>
 
 ### Pausa e volume
 
@@ -222,7 +245,9 @@ Na **onda 15** o jogo avisa "ALERTA: CHEFE" e o Devorador entra: uma canhoneira 
 - Áudio gerado em tempo real com a Web Audio API.
 - As naves, os inimigos e o chefe são **sprites em pixel art gerados por código** (um pequeno rasterizador de formas, sem imagens externas). Os ícones da Oficina são SVG.
 - Fontes pixeladas (Press Start 2P e Pixelify Sans) carregadas do Google Fonts.
-- Tudo o que é salvo fica no `localStorage` do navegador: recordes, nível de piloto (XP), pintura da nave, teclas e volume.
+- Tudo o que é salvo fica no `localStorage` do navegador: recordes, nível de piloto (XP), pintura da nave, teclas, volume e a configuração dos controles do celular.
+- O jogo aceita `?modo=pc` ou `?modo=celular` no endereço para escolher o modo de controles; sem isso ele detecta o aparelho sozinho.
+- Desempenho: a nebulosa de fundo é pré-renderizada, a resolução do canvas é limitada no celular, o HUD só atualiza quando algo muda, e o jogo reduz a qualidade sozinho se a taxa de quadros cair.
 - `scripts/capturar-telas.js` refaz as capturas de tela do jogo usadas neste README (precisa do Chrome ou do Edge).
 
 ---

@@ -7,7 +7,7 @@
 <meta name="description" content="Galaxy Divers é um jogo de combate espacial em pixel art, com movimento livre em 360°, 3 vidas, ondas de inimigos, Oficina de melhorias, recordes, nível de piloto e um chefe na onda 15. Joga direto no navegador, no computador ou no celular.">
 <meta name="theme-color" content="#0d0b2b">
 <meta property="og:title" content="Galaxy Divers">
-<meta property="og:description" content="Pilote, esquive e destrua esquadrões alienígenas em pixel art. Direto no navegador.">
+<meta property="og:description" content="Pilote, esquive e destrua esquadrões alienígenas em pixel art. Jogue no PC ou no celular, direto no navegador.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 24'%3E%3Cpath fill='%23f4f6fb' stroke='%2310144a' stroke-width='1' d='M11 .5l2 5 1 8 .6 4.5-1.6 4h-4l-1.6-4L8 13.5l1-8z'/%3E%3Cpath fill='%23e5372f' d='M1 12l2-2 2 2v8H1zM17 12l2-2 2 2v8h-4z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -138,6 +138,10 @@ footer{border-top:3px solid var(--ink);padding:28px 0;background:rgba(13,11,43,.
 footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;align-items:center}
 footer a{color:var(--cyan)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+.hint{margin:16px auto 0;color:var(--muted);font-size:16px;max-width:60ch}
+.panel ul{margin:8px 0 0;padding-left:18px;color:#3b4694}
+.panel li{margin:4px 0}
+.btn.rec{outline:3px solid #fff;outline-offset:3px}
 </style>
 </head>
 <body>
@@ -155,7 +159,7 @@ footer a{color:var(--cyan)}
       <li><a href="#bestiario">Inimigos</a></li>
       <li><a href="#controles">Controles</a></li>
     </ul>
-    <a class="btn gold" href="jogo/">Jogar agora</a>
+    <a class="btn gold" href="#jogar">Jogar agora</a>
   </div>
 </header>
 
@@ -166,10 +170,12 @@ footer a{color:var(--cyan)}
       <div class="shot"><img src="assets/banner.svg" alt="Galaxy Divers: nave branca e vermelha disparando contra naves alienígenas" width="1200" height="320"></div>
       <h1>GALAXY <span>DIVERS</span></h1>
       <p class="sub">Pilote, esquive e destrua esquadrões alienígenas, onda após onda, até enfrentar o chefe. Combate espacial em pixel art com movimento livre em 360°, direto no navegador, no computador ou no celular.</p>
-      <div class="cta">
-        <a class="btn gold" href="jogo/">Jogar agora</a>
+      <div class="cta" id="jogar">
+        <a class="btn gold" id="playPc" href="jogo/?modo=pc">Jogar no PC</a>
+        <a class="btn gold" id="playMobile" href="jogo/?modo=celular">Jogar no celular</a>
         <a class="btn" href="https://github.com/nicolasmoreira284/Galaxy_Divers" rel="noopener">Ver no GitHub</a>
       </div>
+      <p class="hint">PC: teclado e mouse · Celular: controles na tela que você personaliza (jogue na horizontal)</p>
       <div class="facts" aria-label="Características técnicas">
         <span>HTML5 CANVAS</span><span>JAVASCRIPT PURO</span><span>ARQUIVO ÚNICO</span><span>SEM DEPENDÊNCIAS</span><span>PIXEL ART</span><span>FUNCIONA NO CELULAR</span>
       </div>
@@ -363,12 +369,28 @@ footer a{color:var(--cyan)}
         <div class="shot"><img src="assets/pausa.png" alt="Tela de pausa com volume e os botões Continuar, Reiniciar partida, Controles e Menu principal" width="1200" height="720" loading="lazy"></div>
         <div class="stack">
           <div class="panel"><h3>Pausa, volume e controles</h3><p>A pausa tem Continuar, Reiniciar partida, Controles e Menu principal, além do volume (0 a 100%) com botão de mudo. Tudo fica salvo no navegador.</p></div>
-          <div class="panel"><h3>No celular</h3><p>Joystick à esquerda e, à direita, os botões FOGO, BOOST, manobras laterais, ESPECIAL e TROCAR. O botão II, no topo, pausa o jogo, e o aparelho vibra quando você leva dano. Jogue na horizontal: o jogo entra em tela cheia ao iniciar e o HUD fica compacto.</p></div>
+          <div class="panel"><h3>No celular</h3><p>Joystick à esquerda e, à direita, os botões FOGO, BOOST, manobras laterais, ESPECIAL e TROCAR, tudo ajustável. O botão II, no topo, pausa o jogo, e o aparelho vibra quando você leva dano. Jogue na horizontal: o jogo entra em tela cheia ao iniciar e o HUD fica compacto.</p></div>
+        </div>
+      </div>
+
+      <div class="split rev" style="margin-top:44px">
+        <div class="shot"><img src="assets/editar.png" alt="Tela de personalização dos controles do celular, com sliders de tamanho, joystick e giro" width="844" height="390" loading="lazy"></div>
+        <div class="panel">
+          <h3>Controles do celular do seu jeito</h3>
+          <p>No modo celular, abra a pausa e toque em “Editar controles”:</p>
+          <ul>
+            <li><strong>Mova cada botão</strong> para onde ficar melhor para os seus polegares.</li>
+            <li><strong>Tamanho dos botões</strong> e do joystick: de 50% a 180% e de 60% a 160%.</li>
+            <li><strong>Sensibilidade do giro</strong> do joystick: a nave vira mais rápido ou mais devagar.</li>
+            <li><strong>Auto-mira</strong>: ao atirar, a nave mira sozinha no inimigo mais próximo.</li>
+            <li><strong>Modo canhoto</strong>: troca o lado do joystick e dos botões.</li>
+          </ul>
+          <p style="margin-top:10px">Tudo fica salvo no seu aparelho, e dá para restaurar o padrão.</p>
         </div>
       </div>
 
       <div class="cards three" style="margin-top:44px">
-        <div class="panel"><h3>Direto no navegador</h3><p>Clique em “Jogar agora”. Funciona em Chrome, Edge, Firefox e Safari, sem instalar nada. Em tela cheia (<kbd>F11</kbd>) fica melhor.</p></div>
+        <div class="panel"><h3>Direto no navegador</h3><p>Clique em “Jogar no PC” ou “Jogar no celular”. Funciona em Chrome, Edge, Firefox e Safari, sem instalar nada. Em tela cheia (<kbd>F11</kbd>) fica melhor.</p></div>
         <div class="panel"><h3>Baixar o jogo</h3><p>O jogo é um único arquivo HTML. Baixe pelo repositório e abra com dois cliques.</p></div>
         <div class="panel"><h3>Clonar o código</h3><p><code>git clone https://github.com/nicolasmoreira284/Galaxy_Divers.git</code></p></div>
       </div>
@@ -380,7 +402,7 @@ footer a{color:var(--cyan)}
     <div class="wrap">
       <h2>Os esquadrões estão chegando.</h2>
       <p>Assuma o comando da nave e veja até que onda você chega.</p>
-      <div class="cta"><a class="btn gold" href="jogo/">Iniciar partida</a></div>
+      <div class="cta"><a class="btn gold" href="jogo/?modo=pc">Jogar no PC</a><a class="btn gold" href="jogo/?modo=celular">Jogar no celular</a></div>
     </div>
   </section>
 </main>
@@ -391,5 +413,11 @@ footer a{color:var(--cyan)}
     <span><a href="https://github.com/nicolasmoreira284/Galaxy_Divers" rel="noopener">GitHub</a> · Feito com 🚀 e muito café espacial</span>
   </div>
 </footer>
+<script>
+(function () {
+  var mobile = matchMedia('(pointer: coarse)').matches, b = document.getElementById(mobile ? 'playMobile' : 'playPc');
+  if (b) { b.classList.add('rec'); b.textContent += ' · recomendado'; }
+})();
+</script>
 </body>
 </html>

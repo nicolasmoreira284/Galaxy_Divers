@@ -50,6 +50,11 @@ const hook = `
       score = 6200; wave = 7; kills = 34; P.lives = 0; P.alive = false; gameOver();
     }
     if (h === 'pausa') { el('startBtn').click(); el('lvlBtn1').click(); step(3); togglePause(); }
+    if (h === 'celular' || h === 'editar') {
+      el('startBtn').click(); el('lvlBtn1').click();
+      P.hp = 1e6; P.maxHp = 1e6; wave = 2; startWave(); step(8); P.maxHp = 100; P.hp = 70;
+      if (h === 'editar') { togglePause(); el('pauseEdit').click(); } else state = 'pause';
+    }
     if (h === 'batalha' || h === 'boss' || h === 'oficina') {
       el('startBtn').click(); el('lvlBtn1').click();
       const mx = P.maxHp;
@@ -68,13 +73,16 @@ const tmp = path.join(os.tmpdir(), 'galaxy-divers-captura.html');
 fs.writeFileSync(tmp, html);
 
 // 4. capturas
-const telas = ['menu', 'fases', 'naves', 'batalha', 'boss', 'oficina', 'recordes', 'gameover', 'pausa'];
+const telas = ['menu', 'fases', 'naves', 'batalha', 'boss', 'oficina', 'recordes', 'gameover', 'pausa', 'celular', 'editar'];
+const MOBILE = new Set(['celular', 'editar']);   // capturadas em tela de celular na horizontal, no modo celular
 for (const t of telas) {
   const out = path.join(os.tmpdir(), `galaxy-divers-${t}.png`);
   try { fs.unlinkSync(out); } catch (e) {}
+  const size = MOBILE.has(t) ? '--window-size=844,390' : '--window-size=1200,720';
+  const url = pathToFileURL(tmp).href + (MOBILE.has(t) ? '?modo=celular' : '') + '#' + t;
   try {
-    execFileSync(chrome, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--window-size=1200,720',
-      '--virtual-time-budget=9000', `--screenshot=${out}`, pathToFileURL(tmp).href + '#' + t], { stdio: 'ignore', timeout: 60000 });
+    execFileSync(chrome, ['--headless=new', '--disable-gpu', '--hide-scrollbars', size,
+      '--virtual-time-budget=9000', `--screenshot=${out}`, url], { stdio: 'ignore', timeout: 60000 });
   } catch (e) { /* o Chrome às vezes sai com erro mesmo gerando o arquivo */ }
   if (!fs.existsSync(out)) { console.error('Falhou: ' + t); continue; }
   for (const dir of ['assets', path.join('site', 'assets')]) {
