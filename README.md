@@ -10,6 +10,8 @@
 ![Sem dependências](https://img.shields.io/badge/depend%C3%AAncias-zero-5aa9ff?style=for-the-badge)
 ![Arquivo único](https://img.shields.io/badge/arquivo-%C3%BAnico-7cff9b?style=for-the-badge)
 
+<a href="https://claude.ai/artifact/NGApEjqZNygJrGZwJ5U6hJ"><b>▶ JOGAR NO NAVEGADOR</b></a> &nbsp;·&nbsp; <a href="https://galaxy-divers.web.app"><b>🌐 LANDING PAGE</b></a>
+
 **[▶ Como jogar](#-como-jogar)** · **[🏠 Menu](#-menu-principal)** · **[🎮 Controles](#-controles)** · **[🏅 Vidas e progresso](#-vidas-recordes-e-nível-de-piloto)** · **[🛠 Oficina](#-oficina-de-melhorias)** · **[👾 Inimigos](#-inimigos)** · **[👑 Chefe](#-chefe-o-devorador)**
 
 </div>
@@ -69,6 +71,11 @@ O menu também tem o seu **nível de piloto** (com a barra de XP) e o controle d
 - 🔊 **Efeitos sonoros sintetizados** em tempo real (sem arquivos de áudio).
 
 ## ▶ Como jogar
+
+**Opção 0: jogar online, sem baixar nada**
+
+- ▶ [Jogar no navegador](https://claude.ai/artifact/NGApEjqZNygJrGZwJ5U6hJ), no computador ou no celular.
+- 🌐 [Landing page do jogo](https://galaxy-divers.web.app), com as telas, as regras e os controles.
 
 **Opção 1: baixar e abrir**
 
